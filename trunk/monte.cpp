@@ -1,5 +1,10 @@
 
 #include "monte.h"
+#include <iostream>
+ 
+using namespace std;
+
+
  
 int MONTE::getTamanho(){
 	 return pilha.getTamanho();
@@ -23,9 +28,9 @@ CARTA MONTE::getCarta( int posicao ){
  
  bool MONTE::receberCartas( MONTE m, int posicao ){
 	 CARTA cNova = m.getCarta(posicao);
-	 CARTA cTopo = pilha.getCarta(pilha.getTamanho());
+	 CARTA cTopo = pilha.getCarta(pilha.getTamanho()-1);
 	 
-	 if(cNova.getValor() == cTopo.getValor() + 1 &&
+	 if(cNova.getValor() == cTopo.getValor() - 1 &&
 		 cNova.getCor() != cTopo.getCor() )
 	 {
 		 for(int i=posicao; i<m.getTamanho(); i++)
