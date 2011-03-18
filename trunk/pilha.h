@@ -1,7 +1,6 @@
 class PILHA{
 private:
 	CARTA cartas[52];
-	int tamanhoMax;
 	int tamanhoAtual;
 public:
 	PILHA();
