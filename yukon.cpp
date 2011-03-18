@@ -108,14 +108,8 @@ int main (){
 	BARALHO baralho;
 	MONTE pilhas[7];
 	
-	
     embaralhaCartas(&baralho,&pilhas[0]);
-    
-   imprimeCartas(baralho,pilhas);
-        
-       
-    
-
+    imprimeCartas(baralho,pilhas);
 	
 	string comando;
 	cout << ">> ";

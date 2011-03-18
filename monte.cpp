@@ -20,3 +20,18 @@ CARTA MONTE::getCarta( int posicao ){
  bool MONTE::setVisivelTrue( int posicao ){
 	 return pilha.setVisivelTrue(posicao);
  }
+ 
+ bool MONTE::receberCartas( MONTE m, int posicao ){
+	 CARTA cNova = m.getCarta(posicao);
+	 CARTA cTopo = pilha.getCarta(pilha.getTamanho());
+	 
+	 if(cNova.getValor() == cTopo.getValor() + 1 &&
+		 cNova.getCor() != cTopo.getCor() )
+	 {
+		 for(int i=posicao; i<m.getTamanho(); i++)
+			 pilha.add(m.getCarta(i);
+		 return true;
+	 }
+	 
+	 return false;
+}
