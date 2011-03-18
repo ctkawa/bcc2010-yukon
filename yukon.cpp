@@ -49,11 +49,12 @@ int interpretar(string cmd, MONTE *pilhas){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
-	
+
 	if (origemp>7||origemp<0||destino>8||destino<0) {
 		cout << "origem ou destino e incorreto!" << endl;
 		return 1;
 	}
+
 	if (pilhas[origemp].getTamanho()<0){
 		cout << "monte nao possui nenhuma carta!";
 	}
@@ -93,7 +94,7 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
     pilhas[0].add(c);
      }
 
-void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
+void imprimeCartas(MONTE pilhas[7]){
      int i,j;
     //Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
@@ -110,18 +111,21 @@ void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
 
 int main (){
 
+	
+
+	
 	BARALHO baralho;
 	MONTE pilhas[7];
 	
     embaralhaCartas(&baralho,&pilhas[0]);
-    imprimeCartas(baralho,pilhas);
+    imprimeCartas(pilhas);
 	
 	string comando;
 	cout << ">> ";
-    	cin >> comando;
+    cin >> comando;
 	interpretar(comando,&pilhas[0]);
 	
-	imprimeCartas(baralho,pilhas);
+	imprimeCartas(pilhas);
 
 	return 0;
 }
