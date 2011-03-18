@@ -1,6 +1,9 @@
 #include "baralho.h"
 
 BARALHO::BARALHO(){
+	// seleciona semente randomica
+	srand( time(NULL) );
+	
 	int carta, valor;
 	
 	valor = 0;
@@ -17,8 +20,6 @@ BARALHO::BARALHO(){
 }
 
 CARTA BARALHO::getCartaRand(){
-	// seleciona semente
-	srand( time(NULL) );
 	// recebe valor inteiro aleatório menos que o tamanhoAtual
 	int r = rand() % tamanhoAtual;
 	// guarda o valor
