@@ -31,15 +31,15 @@ ajuda/sobre
 */
 
 //interpretacao e execucao de comando
-//forma <origem>-<destino>, em numero
+//forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
 int interpretar(string cmd){
-	int origemp;
-	int origemc;
-	int destino;
+	int origemp;	//pilha de origem
+	int origemc;	//carta de origem
+	int destino;	//pilha de destino
 
-	int posvirg1 = cmd.find(",");
-	int posvirg2 = cmd.rfind(",");
-	if ((posvirg1 != string::npos)&&(posvirg2 != string::npos)){
+	int posvirg1 = cmd.find(",");	//posicao da 1a virgula
+	int posvirg2 = cmd.rfind(",");	//posicao da 2a (ultima) virgula
+	if ((posvirg1 != string::npos)&&(posvirg2 != string::npos)){	//se foi obtido posicao das duas virgulas, faca:
 		origemp = atoi((cmd.substr(0,posvirg1)).data());
 		origemc = atoi((cmd.substr(posvirg1+1,posvirg2-posvirg1)).data());
 		destino = atoi((cmd.substr(posvirg2+1,cmd.size()-posvirg2)).data());
@@ -49,8 +49,11 @@ int interpretar(string cmd){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
-	
-	cout <<"mv "<<origemp<<", "<<origemc<<" to "<<destino << endl;
+	if (origemp>7||origemp<1||destino>8||destino<1) {
+		cout << "origem ou destino é incorreto!";
+		return 1;
+	}
+	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	/*cout << "pos1=" << posvirg1 << endl;
 	cout << "pos2=" << posvirg2 << endl;*/
 	return 0;
@@ -81,7 +84,7 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
 
 void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
      int i,j;
-    //Verificar e CORRIGIR o tamanho m�ximo de uma coluna e substituir o valor final de "i"
+    //Verificar e CORRIGIR o tamanho m痊imo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
        for(j=0;j<=6;j++){
           if(pilhas[j].getTamanho()>= i+1)
@@ -110,7 +113,8 @@ int main (){
 	
 	string comando;
 	cout << ">> ";
-    cin >> comando;
+    	cin >> comando;
+	interpretar(comando);
 	
 
 	return 0;
