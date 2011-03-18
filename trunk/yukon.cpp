@@ -3,6 +3,7 @@
 #include <time.h>
 
 // editei
+// editei x2
 
 using namespace std;
 
@@ -34,7 +35,7 @@ bool CARTA::setValor( int v ){
 		valor = v;
 		return 0;
 	}
-	
+
 	// valor padrão para 1
 	valor = 1;
 	return 1;
@@ -46,7 +47,7 @@ bool CARTA::setNaipe( char n ){
 		naipe = n;
 		return 0;
 	}
-	
+
 	// valor padrão para copas
 	naipe = 'C';
 	return 1;
@@ -68,7 +69,7 @@ CARTA CARTA::operator=( CARTA c ){
 	valor = c.getValor();
 	naipe = c.getNaipe();
 	visivel = c.getVisivel();
-	
+
 	return *this;
 }
 
@@ -111,7 +112,7 @@ ostream &operator<<(ostream & out, CARTA c ){
 		out << "[" << c.getNaipe() << ", " << c.getValor() << "]";
 	else
 		out << "[?, ?]";
-	
+
 	return out;
 }
 
@@ -129,7 +130,7 @@ public:
 
 BARALHO::BARALHO(){
 	int carta, valor;
-	
+
 	valor = 0;
 	for(carta=0; carta<52; carta++){
 		cartas[carta].valor = carta%13 + 1;
@@ -139,7 +140,7 @@ BARALHO::BARALHO(){
 		else cartas[carta].naipe = 'E';
 		valor++;
 	}
-	
+
 	tamanhoAtual = 51;
 }
 
@@ -160,13 +161,13 @@ int BARALHO::removerCarta( int posicao ){
 	// verifica validade de posicao
 	if( posicao < 0 || posicao > tamanhoAtual )
 		return 1;
-	
+
 	int carta;
 	for(carta=posicao; carta<tamanhoAtual; carta++)
 		// reposiciona as cartas
 		cartas[carta] = cartas[carta + 1];
 	tamanhoAtual--;
-	
+
 	return 0;
 }
 
@@ -213,23 +214,23 @@ bool PILHA::add( CARTA c){
 ostream &operator<<( ostream & out, PILHA p){
 	for(int carta=0; carta<p.getTamanho(); carta++)
 		out << p.getCarta(carta) << endl;
-	
+
 	return out;
 }
 
 //== MAIN ===========================================
 
 int main(){
-	
+
 	BARALHO baralho;
 	PILHA pilhas[7];
-	
+
 	CARTA c;
 	c = baralho.getCartaRand();
 	c.setVisivel(true);
 	pilhas[0].add(c);
 	cout << pilhas[0];
-	
+
 	for(int pilha=1; pilha<7; pilha++){
 		int p;
 		for(p=0; p<pilha; p++){
@@ -243,9 +244,9 @@ int main(){
 			c.setVisivel(true);
 			pilhas[pilha].add(c);
 		}
-		
+
 		cout << pilhas[pilha];
 	}
-	
+
 	return 0;
 }
