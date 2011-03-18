@@ -2,6 +2,7 @@
 #include "carta.h"
 #include "baralho.h"
 #include "monte.h"
+#include "fundacao.h"
 
 using namespace std;
 
@@ -104,7 +105,7 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
     pilhas[0].add(c);
      }
 
-void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
+void imprimeCartas(BARALHO baralho, MONTE pilhas[7], FUNDACAO fundacao){
      int i,j;
     //Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
@@ -117,22 +118,42 @@ void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
        cout<<endl;
      
      }
+     
+    if(fundacao.getMonte(0) == 0)
+		cout << "[C,  ] ";
+	else
+		cout << "[C, " << fundacao.getMonte(0) << "] ";
+	if(fundacao.getMonte(1) == 0)
+		cout << "[O,  ] ";
+	else
+		cout << "[O, " << fundacao.getMonte(1) << "] ";
+	if(fundacao.getMonte(2) == 0)
+		cout << "[E,  ] ";
+	else
+		cout << "[E, " << fundacao.getMonte(2) << "] ";
+	if(fundacao.getMonte(3) == 0)
+		cout << "[P  ] ";
+	else
+		cout << "[P, " << fundacao.getMonte(3) << "] ";
+	
+	cout << endl;
 }
 
 int main (){
 
 	BARALHO baralho;
 	MONTE pilhas[7];
+	FUNDACAO fundacao;
 	
     embaralhaCartas(&baralho,&pilhas[0]);
-    imprimeCartas(baralho,pilhas);
+    imprimeCartas(baralho,pilhas,fundacao);
 	
 	string comando;
 	cout << ">> ";
     	cin >> comando;
 	interpretar(comando,&pilhas[0]);
 	
-	imprimeCartas(baralho,pilhas);
+	imprimeCartas(baralho,pilhas,fundacao);
     system("PAUSE");
 	return 0;
 }
