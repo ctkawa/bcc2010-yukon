@@ -10,9 +10,9 @@ ostream &operator<<(ostream & out, CARTA c ){
 	if(c.getVisivel()) {
 		out << "[" ;
 		if (c.getNaipe()=='C'){
-		  out << "♥";}
+		  out << "♡";}			// se nao tiver visivel usar ♥ e ♦
 		else if (c.getNaipe()=='O'){
-		  out << "♦";}
+		  out << "♢";}
 		else if (c.getNaipe()=='P'){
 		  out << "♣";}
 		else if (c.getNaipe()=='E'){
@@ -20,7 +20,7 @@ ostream &operator<<(ostream & out, CARTA c ){
 		else{
 		  cout << "tem algo errado na carta...";}
 		if (c.getValor()<10)
-		  out << "0";
+		  out << " ";
 		out << c.getValor() << "]";
 	} else
 		out << "[?,?]";
