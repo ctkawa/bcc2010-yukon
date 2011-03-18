@@ -10,4 +10,5 @@ public:
 	CARTA getCarta( int );
 	bool add( CARTA );
 	bool remover( int );
+	bool setVisivelTrue( int );
 }; 
