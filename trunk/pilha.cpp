@@ -40,6 +40,7 @@ bool PILHA::remover( int posicao ){
 bool PILHA::setVisivelTrue( int posicao ){
 	if(0 <= posicao && posicao <= tamanhoAtual){
 		cartas[posicao - 1].setVisivel(true);
+		return true;
 	} else
 		return false;
 }
