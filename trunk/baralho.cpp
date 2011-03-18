@@ -16,7 +16,7 @@ BARALHO::BARALHO(){
 		valor++;
 	}
 	
-	tamanhoAtual = 51;
+	tamanhoAtual = 52;
 }
 
 CARTA BARALHO::getCartaRand(){
