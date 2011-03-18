@@ -18,7 +18,7 @@ ostream &operator<<(ostream & out, CARTA c ){
 
 ostream &operator<<( ostream & out, PILHA p){
 	for(int carta=0; carta<p.getTamanho(); carta++)
-		out << p.getCarta(carta) << endl;
+		out << p.getCarta(carta) << " ";
 	
 	return out;
 }
@@ -34,8 +34,17 @@ int main (){
 	c.setVisivel(true);
 	pilhas[0].add(c);
 	
+	c = baralho.getCartaRand();
+	c.setVisivel(true);
+	pilhas[1].add(c);
+	
+	c = baralho.getCartaRand();
+	c.setVisivel(true);
+	pilhas[1].add(c);
+	
+	
 	for(int pilha=0; pilha<7; pilha++)
-		cout << pilhas[pilha] << "-----" << endl;
+		cout << pilhas[pilha] << endl << "-----" << endl;
 	
 	
 	string comando;
