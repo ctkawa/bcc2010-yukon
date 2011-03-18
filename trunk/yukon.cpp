@@ -154,6 +154,5 @@ int main (){
 	interpretar(comando,&pilhas[0]);
 	
 	imprimeCartas(baralho,pilhas,fundacao);
-    system("PAUSE");
 	return 0;
 }
