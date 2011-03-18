@@ -15,7 +15,7 @@ CARTA PILHA::getCarta( int posicao ){
 	if(0<=posicao && posicao <=tamanhoAtual)
 		return cartas[posicao];
 	else
-		return 0;
+		return *(new CARTA);
 }
 
 bool PILHA::add( CARTA c){
@@ -28,10 +28,3 @@ bool PILHA::add( CARTA c){
 		return false;
 }
 
-ostream &operator<<( ostream & out, PILHA p){
-    cout << p.getTamanho();
-	for(int carta=0; carta<p.getTamanho(); carta++)
-		out << p.getCarta(carta) << endl;
-
-	return out;
-}

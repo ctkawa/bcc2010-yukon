@@ -1,3 +1,5 @@
+#include "carta.h"
+
 class PILHA{
 private:
 	CARTA cartas[52];
