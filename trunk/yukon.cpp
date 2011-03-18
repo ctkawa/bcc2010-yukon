@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+// editei
+
 using namespace std;
 
 //== CARTA ===========================================
