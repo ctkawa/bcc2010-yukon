@@ -1,4 +1,7 @@
- using namespace std;
+#ifndef _CARTA_H_
+#define _CARTA_H_
+
+using namespace std;
  
  class CARTA{
 	 // o construtor de BARALHO precisa de acesso direto para modificar as cartas
@@ -21,4 +24,4 @@
 	 bool virar(); // troca a visibilidade
  };
  
- 
+#endif
