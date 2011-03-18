@@ -53,6 +53,12 @@ int interpretar(string cmd){
 		cout << "origem ou destino é incorreto!";
 		return 1;
 	}
+	if (pilhas[origemp].getTamanho()<1){
+		cout <<　"monte não possui nenhuma carta!"
+	}
+	
+	
+	
 	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	/*cout << "pos1=" << posvirg1 << endl;
 	cout << "pos2=" << posvirg2 << endl;*/
@@ -63,16 +69,16 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
      CARTA c;
 	int i,j;
 	for(i=1;i<=6;i++){
-       for(j=1;j<=i;j++){
-          c=baralho->getCartaRand();
-          pilhas[i].add(c);
+	  for(j=1;j<=i;j++){
+	    c=baralho->getCartaRand();
+	    pilhas[i].add(c);
           }
-             for(j=1;j<=5;j++){
-         c=baralho->getCartaRand();
-         c.setVisivel(true);
-         pilhas[i].add(c); 
-       } 
-    }
+          for(j=1;j<=5;j++){
+	    c=baralho->getCartaRand();
+	    c.setVisivel(true);
+	    pilhas[i].add(c); 
+	  } 
+	}
 
 
 	// Primeira pilha
@@ -84,7 +90,7 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
 
 void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
      int i,j;
-    //Verificar e CORRIGIR o tamanho m痊imo de uma coluna e substituir o valor final de "i"
+    //Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
        for(j=0;j<=6;j++){
           if(pilhas[j].getTamanho()>= i+1)
