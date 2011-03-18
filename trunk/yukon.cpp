@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <stdlib.h>
 #include "carta.h"
 #include "baralho.h"
 #include "pilha.h"
@@ -24,6 +26,19 @@ ostream &operator<<( ostream & out, PILHA p){
 }
 
 
+/*
+mover
+ajuda/sobre
+*/
+
+int interpretar(string cmd){
+	string origem = cmd.substr(0,1);
+	string destino = cmd.substr(2,1);
+	cout <<"mv "<<origem<<" to "<<destino << endl;
+	return 0;
+}
+
+
 int main (){
 	
 	BARALHO baralho;
@@ -45,6 +60,8 @@ int main (){
 	string comando;
 	cout << ">> ";
 	cin >> comando;
-	
+
+	interpretar(comando);
+
 	return 0;
 }
