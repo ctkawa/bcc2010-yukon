@@ -22,6 +22,7 @@ using namespace std;
 	 bool getVisivel();
 	 bool setVisivel( bool ); // seleciona a visibilidade
 	 bool virar(); // troca a visibilidade
+	 bool getCor(); // 0 = preto, 1 = vermelho
  };
  
 #endif

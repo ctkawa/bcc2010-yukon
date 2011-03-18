@@ -80,4 +80,11 @@
 	 visivel = !visivel;
 	 return visivel;
  }
+ 
+ bool CARTA::getCor(){
+	 if( naipe == 'C' || naipe == 'O')
+		 return true;
+	 else
+		 return false;
+}
 

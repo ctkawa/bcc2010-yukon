@@ -9,4 +9,5 @@ public:
 	bool add( CARTA );
 	bool remover( int );
 	bool setVisivelTrue( int );
+	bool receberCartas( MONTE, int );
 };
