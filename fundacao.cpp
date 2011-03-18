@@ -8,6 +8,7 @@ FUNDACAO::FUNDACAO(){
 int FUNDACAO::getMonte( int monte ){
 	if(0<=monte && monte <4)
 		return montes[monte];
+	return 0;
 }
 
 bool FUNDACAO::addCarta( CARTA c ){

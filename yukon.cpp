@@ -49,8 +49,8 @@ int interpretar(string cmd, MONTE *pilhas){
 	int origemc;	//carta de origem
 	int destino;	//pilha de destino
 
-	int posvirg1 = cmd.find(",");	//posicao da 1a virgula
-	int posvirg2 = cmd.rfind(",");	//posicao da 2a (ultima) virgula
+	unsigned int posvirg1 = cmd.find(",");	//posicao da 1a virgula
+	unsigned int posvirg2 = cmd.rfind(",");	//posicao da 2a (ultima) virgula
 	if ((posvirg1 != string::npos)&&(posvirg2 != string::npos)){	//se foi obtido posicao das duas virgulas, faca:
 		origemp = atoi((cmd.substr(0,posvirg1)).data());
 		origemc = atoi((cmd.substr(posvirg1+1,posvirg2-posvirg1)).data());
