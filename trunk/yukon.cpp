@@ -24,6 +24,8 @@ int main (){
 	a.setVisivel(true);
 	cout << a << endl;
 	
+	cout << b.getCartaRand() << endl;
+	
 	string comando;
 	cout << ">> ";
 	cin >> comando;
