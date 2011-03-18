@@ -32,7 +32,7 @@ ajuda/sobre
 
 //interpretacao e execucao de comando
 //forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
-int interpretar(string cmd){
+int interpretar(string cmd, MONTE *pilhas){
 	int origemp;	//pilha de origem
 	int origemc;	//carta de origem
 	int destino;	//pilha de destino
@@ -49,14 +49,19 @@ int interpretar(string cmd){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
-	if (origemp>7||origemp<1||destino>8||destino<1) {
-		cout << "origem ou destino é incorreto!";
+	
+	if (origemp>7||origemp<0||destino>8||destino<0) {
+		cout << "origem ou destino e incorreto!" << endl;
 		return 1;
 	}
-	if (pilhas[origemp].getTamanho()<1){
-		cout <<　"monte não possui nenhuma carta!"
+	if (pilhas[origemp].getTamanho()<0){
+		cout << "monte nao possui nenhuma carta!";
 	}
-	
+	if (pilhas[destino].receberCartas(pilhas[origemp],origemc)){
+	    pilhas[origemp].remover(origemc);
+	} else {
+	    cout << "nao moveu.";
+	}
 	
 	
 	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
@@ -114,8 +119,9 @@ int main (){
 	string comando;
 	cout << ">> ";
     	cin >> comando;
-	interpretar(comando);
+	interpretar(comando,&pilhas[0]);
 	
+	imprimeCartas(baralho,pilhas);
 
 	return 0;
 }
