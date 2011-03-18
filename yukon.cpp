@@ -56,21 +56,16 @@ int interpretar(string cmd){
 	return 0;
 }
 
-
-int main (){
-
-	BARALHO baralho;
-	PILHA pilhas[7];
-	CARTA c;
-	
+void embaralhaCartas(BARALHO *baralho, PILHA *pilhas){
+     CARTA c;
 	int i,j;
 	for(i=1;i<=6;i++){
        for(j=1;j<=i;j++){
-          c=baralho.getCartaRand();
+          c=baralho->getCartaRand();
           pilhas[i].add(c);
           }
              for(j=1;j<=5;j++){
-         c=baralho.getCartaRand();
+         c=baralho->getCartaRand();
          c.setVisivel(true);
          pilhas[i].add(c); 
        } 
@@ -78,13 +73,15 @@ int main (){
 
 
 	// Primeira pilha
-	c=baralho.getCartaRand();
+	c=baralho->getCartaRand();
 
     c.setVisivel(true);      
     pilhas[0].add(c);
+     }
 
-
-    //Verificar o tamanho máximo de uma coluna e substituir o "i"
+void imprimeCartas(BARALHO baralho, PILHA pilhas[7]){
+     int i,j;
+    //Verificar e CORRIGIR o tamanho máximo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
        for(j=0;j<=6;j++){
           if(pilhas[j].getTamanho()>= i+1)
@@ -93,7 +90,21 @@ int main (){
               cout << "\t";
        }                  
        cout<<endl;
-    }
+     
+     }
+}
+
+int main (){
+
+	BARALHO baralho;
+	PILHA pilhas[7];
+	int i,j;
+	
+	
+	
+    embaralhaCartas(&baralho,&pilhas[0]);
+    
+   imprimeCartas(baralho,pilhas);
         
        
     
