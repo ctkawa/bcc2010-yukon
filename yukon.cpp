@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-#include <stdlib.h>
 #include "carta.h"
 #include "baralho.h"
 #include "pilha.h"
@@ -26,6 +24,7 @@ ostream &operator<<( ostream & out, PILHA p){
 }
 
 
+
 /*
 mover
 ajuda/sobre
@@ -49,37 +48,46 @@ int main (){
 	PILHA pilhas[7];
 	CARTA c;
 	
-	// Primeira pilha
-	c=baralho.getCartaRand();
-    c.setVisivel(true);      
-    pilhas[0].add(c);
-	
-	// Outras 6 pilhas
 	int i,j;
 	for(i=1;i<=6;i++){
-		for(j=1;j<=i;j++){
-			c=baralho.getCartaRand();
-			pilhas[i].add(c);
-		}
-		for(j=1;j<=5;j++){
-			c=baralho.getCartaRand();
-			c.setVisivel(true);
-			pilhas[i].add(c);    
-		}
-	}
+       for(j=1;j<=i;j++){
+          c=baralho.getCartaRand();
+          pilhas[i].add(c);
+          }
+             for(j=1;j<=5;j++){
+         c=baralho.getCartaRand();
+         c.setVisivel(true);
+         pilhas[i].add(c); 
+       } 
+    }
 
-	for(int pilha=0; pilha<7; pilha++)
-		cout << pilhas[pilha] << endl << "-----" << endl;
-	
-	pilhas[5].remover(3);
-	cout << pilhas[5];
+
+	// Primeira pilha
+	c=baralho.getCartaRand();
+
+    c.setVisivel(true);      
+    pilhas[0].add(c);
+
+
+    //Verificar o tamanho máximo de uma coluna e substituir o "i"
+    for(i=0;i<=10;i++){
+       for(j=0;j<=6;j++){
+          if(pilhas[j].getTamanho()>= i+1)
+             cout<<pilhas[j].getCarta(i) << "\t";
+          else
+              cout << "\t";
+       }                  
+       cout<<endl;
+    }
+        
+       
+    
+
 	
 	string comando;
 	cout << ">> ";
-	cin >> comando;
-
-	interpretar(comando);
-
+    cin >> comando;
+	
 
 	return 0;
 }
