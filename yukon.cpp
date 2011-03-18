@@ -31,9 +31,13 @@ mover
 ajuda/sobre
 */
 
+//interpretacao e execucao de comando
+//forma <origem>-<destino>, em numero
 int interpretar(string cmd){
-	string origem = cmd.substr(0,1);
-	string destino = cmd.substr(2,1);
+	
+	int origem = atoi((cmd.substr(0,1)).data());
+	int destino = atoi(cmd.substr(2,1).data());
+
 	cout <<"mv "<<origem<<" to "<<destino << endl;
 	return 0;
 }
