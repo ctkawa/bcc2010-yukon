@@ -1,7 +1,7 @@
 #include <iostream>
 #include "carta.h"
 #include "baralho.h"
-#include "pilha.h"
+#include "monte.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ ostream &operator<<(ostream & out, CARTA c ){
 }
 
 
-ostream &operator<<( ostream & out, PILHA p){
+ostream &operator<<( ostream & out, MONTE p){
 	for(int carta=0; carta<p.getTamanho(); carta++)
 		out << p.getCarta(carta) << " ";
 	
@@ -56,7 +56,7 @@ int interpretar(string cmd){
 	return 0;
 }
 
-void embaralhaCartas(BARALHO *baralho, PILHA *pilhas){
+void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
      CARTA c;
 	int i,j;
 	for(i=1;i<=6;i++){
@@ -79,7 +79,7 @@ void embaralhaCartas(BARALHO *baralho, PILHA *pilhas){
     pilhas[0].add(c);
      }
 
-void imprimeCartas(BARALHO baralho, PILHA pilhas[7]){
+void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
      int i,j;
     //Verificar e CORRIGIR o tamanho máximo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
@@ -97,9 +97,7 @@ void imprimeCartas(BARALHO baralho, PILHA pilhas[7]){
 int main (){
 
 	BARALHO baralho;
-	PILHA pilhas[7];
-	int i,j;
-	
+	MONTE pilhas[7];
 	
 	
     embaralhaCartas(&baralho,&pilhas[0]);
