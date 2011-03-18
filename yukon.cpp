@@ -40,28 +40,52 @@ int interpretar(string cmd){
 
 
 int main (){
-	
+
 	BARALHO baralho;
 	PILHA pilhas[7];
 	CARTA c;
 	
-	c = baralho.getCartaRand();
+	int i,j;
+	for(i=1;i<=6;i++){
+       for(j=1;j<=i;j++){
+          c=baralho.getCartaRand();
+          pilhas[i].add(c);
+       }
+       for(j=1;j<=5;j++){
+         c=baralho.getCartaRand();
+         c.setVisivel(true);
+         pilhas[i].add(c);    
+      }
+}  
+    c=baralho.getCartaRand();
+    c.setVisivel(true);      
+    pilhas[0].add(c);
+
+      
+    
+    /*
+    c = baralho.getCartaRand();
 	c.setVisivel(true);
 	pilhas[0].add(c);
 	
+	c = baralho.getCartaRand();
+	c.setVisivel(true);
+	pilhas[1].add(c);
 	
-	
-	
+	c = baralho.getCartaRand();
+	c.setVisivel(true);
+	pilhas[1].add(c);0
+	*/
 	
 	for(int pilha=0; pilha<7; pilha++)
 		cout << pilhas[pilha] << endl << "-----" << endl;
-	
 	
 	string comando;
 	cout << ">> ";
 	cin >> comando;
 
 	interpretar(comando);
+
 
 	return 0;
 }
