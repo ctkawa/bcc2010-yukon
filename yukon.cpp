@@ -7,14 +7,25 @@ using namespace std;
 
 ostream &operator<<(ostream & out, CARTA c ){
 	// imprime de acordo cm a visibilidade
-	if(c.getVisivel())
-		out << "[" << c.getNaipe() << ", " << c.getValor() << "]";
-	else
-		out << "[?, ?]";
-	
+	if(c.getVisivel()) {
+		out << "[" ;
+		if (c.getNaipe()=='C'){
+		  out << "♥";}
+		else if (c.getNaipe()=='O'){
+		  out << "♦";}
+		else if (c.getNaipe()=='P'){
+		  out << "♣";}
+		else if (c.getNaipe()=='E'){
+		  out << "♠";}
+		else{
+		  cout << "tem algo errado na carta...";}
+		if (c.getValor()<10)
+		  out << "0";
+		out << c.getValor() << "]";
+	} else
+		out << "[?,?]";
 	return out;
 }
-
 
 ostream &operator<<( ostream & out, MONTE p){
 	for(int carta=0; carta<p.getTamanho(); carta++)
@@ -56,7 +67,7 @@ int interpretar(string cmd, MONTE *pilhas){
 	}
 	if (pilhas[origemp].getTamanho()<0)
 		cout << "monte nao possui nenhuma carta!";
-	if(origemp = origempc)
+	if(origemp == origemc)
 	   cout<< "Coluna de origem igual coluna de destino";
     else
 	   if (pilhas[destino].receberCartas(pilhas[origemp],origemc)){
