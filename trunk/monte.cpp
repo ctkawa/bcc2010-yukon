@@ -29,7 +29,7 @@ CARTA MONTE::getCarta( int posicao ){
 		 cNova.getCor() != cTopo.getCor() )
 	 {
 		 for(int i=posicao; i<m.getTamanho(); i++)
-			 pilha.add(m.getCarta(i);
+			 pilha.add(m.getCarta(i));
 		 return true;
 	 }
 	 
