@@ -33,11 +33,26 @@ ajuda/sobre
 //interpretacao e execucao de comando
 //forma <origem>-<destino>, em numero
 int interpretar(string cmd){
-	
-	int origem = atoi((cmd.substr(0,1)).data());
-	int destino = atoi(cmd.substr(2,1).data());
+	int origemp;
+	int origemc;
+	int destino;
 
-	cout <<"mv "<<origem<<" to "<<destino << endl;
+	int posvirg1 = cmd.find(",");
+	int posvirg2 = cmd.rfind(",");
+	if ((posvirg1 != string::npos)&&(posvirg2 != string::npos)){
+		origemp = atoi((cmd.substr(0,posvirg1)).data());
+		origemc = atoi((cmd.substr(posvirg1+1,posvirg2-posvirg1)).data());
+		destino = atoi((cmd.substr(posvirg2+1,cmd.size()-posvirg2)).data());
+		
+	}
+	else{
+		cout << "formato de comando incorreto!" << endl;
+		return 1;
+	}
+	
+	cout <<"mv "<<origemp<<", "<<origemc<<" to "<<destino << endl;
+	/*cout << "pos1=" << posvirg1 << endl;
+	cout << "pos2=" << posvirg2 << endl;*/
 	return 0;
 }
 
