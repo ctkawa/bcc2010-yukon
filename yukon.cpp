@@ -67,6 +67,9 @@ int main (){
 	for(int pilha=0; pilha<7; pilha++)
 		cout << pilhas[pilha] << endl << "-----" << endl;
 	
+	pilhas[5].remover(3);
+	cout << pilhas[5];
+	
 	string comando;
 	cout << ">> ";
 	cin >> comando;

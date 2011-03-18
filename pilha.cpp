@@ -1,5 +1,5 @@
 #include "pilha.h"
- 
+#include <iostream>
 
 
 PILHA::PILHA(){
@@ -28,3 +28,18 @@ bool PILHA::add( CARTA c){
 		return false;
 }
 
+bool PILHA::remover( int posicao ){
+	if(0 <= posicao && posicao <= tamanhoAtual){
+		tamanhoAtual = posicao;
+		setVisivelTrue(tamanhoAtual);
+		return true;
+	} else
+		return false;
+}
+
+bool PILHA::setVisivelTrue( int posicao ){
+	if(0 <= posicao && posicao <= tamanhoAtual){
+		cartas[posicao - 1].setVisivel(true);
+	} else
+		return false;
+}
