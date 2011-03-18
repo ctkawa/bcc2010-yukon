@@ -24,5 +24,9 @@ int main (){
 	a.setVisivel(true);
 	cout << a << endl;
 	
+	string comando;
+	cout << ">> ";
+	cin >> comando;
+	
 	return 0;
 }
