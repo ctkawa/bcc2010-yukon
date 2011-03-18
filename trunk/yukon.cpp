@@ -34,13 +34,8 @@ int main (){
 	c.setVisivel(true);
 	pilhas[0].add(c);
 	
-	c = baralho.getCartaRand();
-	c.setVisivel(true);
-	pilhas[1].add(c);
 	
-	c = baralho.getCartaRand();
-	c.setVisivel(true);
-	pilhas[1].add(c);
+	
 	
 	
 	for(int pilha=0; pilha<7; pilha++)
