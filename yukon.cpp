@@ -17,7 +17,6 @@ ostream &operator<<(ostream & out, CARTA c ){
 
 
 ostream &operator<<( ostream & out, PILHA p){
-	cout << p.getTamanho();
 	for(int carta=0; carta<p.getTamanho(); carta++)
 		out << p.getCarta(carta) << endl;
 	
@@ -27,8 +26,16 @@ ostream &operator<<( ostream & out, PILHA p){
 
 int main (){
 	
-	PILHA p;
+	BARALHO baralho;
+	PILHA pilhas[7];
+	CARTA c;
 	
+	c = baralho.getCartaRand();
+	c.setVisivel(true);
+	pilhas[0].add(c);
+	
+	for(int pilha=0; pilha<7; pilha++)
+		cout << pilhas[pilha] << "-----" << endl;
 	
 	
 	string comando;
