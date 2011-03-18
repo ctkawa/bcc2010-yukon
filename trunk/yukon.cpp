@@ -49,23 +49,24 @@ int interpretar(string cmd, MONTE *pilhas){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
-
+	
 	if (origemp>7||origemp<0||destino>8||destino<0) {
 		cout << "origem ou destino e incorreto!" << endl;
 		return 1;
 	}
-
-	if (pilhas[origemp].getTamanho()<0){
+	if (pilhas[origemp].getTamanho()<0)
 		cout << "monte nao possui nenhuma carta!";
-	}
-	if (pilhas[destino].receberCartas(pilhas[origemp],origemc)){
-	    pilhas[origemp].remover(origemc);
-	} else {
-	    cout << "nao moveu.";
-	}
+	if(origemp = origempc)
+	   cout<< "Coluna de origem igual coluna de destino";
+    else
+	   if (pilhas[destino].receberCartas(pilhas[origemp],origemc)){
+	      pilhas[origemp].remover(origemc);
+	      cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
+	   } else
+	       cout << "Esse movimento nao eh possivel."<<endl;
+	   
 	
 	
-	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	/*cout << "pos1=" << posvirg1 << endl;
 	cout << "pos2=" << posvirg2 << endl;*/
 	return 0;
@@ -85,16 +86,14 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
 	    pilhas[i].add(c); 
 	  } 
 	}
-
-
-	// Primeira pilha
+	// Carta da primeira pilha
 	c=baralho->getCartaRand();
 
     c.setVisivel(true);      
     pilhas[0].add(c);
      }
 
-void imprimeCartas(MONTE pilhas[7]){
+void imprimeCartas(BARALHO baralho, MONTE pilhas[7]){
      int i,j;
     //Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
     for(i=0;i<=10;i++){
@@ -111,21 +110,18 @@ void imprimeCartas(MONTE pilhas[7]){
 
 int main (){
 
-	
-
-	
 	BARALHO baralho;
 	MONTE pilhas[7];
 	
     embaralhaCartas(&baralho,&pilhas[0]);
-    imprimeCartas(pilhas);
+    imprimeCartas(baralho,pilhas);
 	
 	string comando;
 	cout << ">> ";
-    cin >> comando;
+    	cin >> comando;
 	interpretar(comando,&pilhas[0]);
 	
-	imprimeCartas(pilhas);
-
+	imprimeCartas(baralho,pilhas);
+    system("PAUSE");
 	return 0;
 }
