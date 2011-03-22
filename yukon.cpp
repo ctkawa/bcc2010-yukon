@@ -35,8 +35,6 @@ ostream &operator<<( ostream & out, MONTE p){
 	return out;
 }
 
-
-
 /*
 mover
 ajuda/sobre
@@ -44,7 +42,7 @@ ajuda/sobre
 
 //interpretacao e execucao de comando
 //forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
-int interpretar(string cmd, MONTE *pilhas){
+int interpretar(string cmd, MONTE *pilhas, FUNDACAO *fundacao){
 	int origemp;	//pilha de origem
 	int origemc;	//carta de origem
 	int destino;	//pilha de destino
@@ -165,7 +163,7 @@ int main (){
 	string comando;
 	cout << ">> ";
     	cin >> comando;
-	interpretar(comando,&pilhas[0]);
+	interpretar(comando,&pilhas[0],&fundacao);
 	
 	imprimeCartas(baralho,pilhas,fundacao);
 	return 0;
