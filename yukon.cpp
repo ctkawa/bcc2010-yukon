@@ -106,16 +106,30 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
      }
 
 void imprimeCartas(BARALHO baralho, MONTE pilhas[7], FUNDACAO fundacao){
+
+	cout << endl;
+
+	//impressão de número de colunas
+	cout << "\t";
+	for (int cnt=0;cnt<7;cnt++){
+		cout << "__" << cnt << "__" << "\t";
+	}
+	cout << endl;
+
      int i,j;
     //Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
-    for(i=0;i<=10;i++){
-       for(j=0;j<=6;j++){
+    for(i=0;i<=10;i++){	// linha
+	cout << "  " << i;
+	if (i<10)
+		cout << " ";
+	cout << "|" << "\t";
+       for(j=0;j<=6;j++){	// coluna
           if(pilhas[j].getTamanho()>= i+1)
              cout<<pilhas[j].getCarta(i) << "\t";
           else
               cout << "\t";
        }                  
-       cout<<endl;
+       cout << "| " << i << endl;
      
      }
      
