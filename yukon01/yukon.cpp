@@ -35,6 +35,8 @@ ostream &operator<<( ostream & out, MONTE p){
 	return out;
 }
 
+
+
 /*
 mover
 ajuda/sobre
@@ -42,7 +44,20 @@ ajuda/sobre
 
 //interpretacao e execucao de comando
 //forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
-int interpretar(string cmd, MONTE *pilhas, FUNDACAO *fundacao){
+/*
+	retornos de interpretar:
+	0 - interpretado correto
+	1 - erro de interpretacao
+	2 - comando ignorado
+	3 - fechando jogo
+*/
+int interpretar(string cmd, MONTE *pilhas){
+	
+	if (cmd == "")
+		return 2;
+	if (cmd=="fechar")
+		return 3;
+
 	int origemp;	//pilha de origem
 	int origemc;	//carta de origem
 	int destino;	//pilha de destino
@@ -73,7 +88,7 @@ int interpretar(string cmd, MONTE *pilhas, FUNDACAO *fundacao){
 	      pilhas[origemp].remover(origemc);
 	      cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	   } else
-	       cout << "Esse movimento nao eh possivel."<<endl;
+	       cout << "Esse movimento nao é possivel."<<endl;
 	   
 	
 	
@@ -104,9 +119,6 @@ void embaralhaCartas(BARALHO *baralho, MONTE *pilhas){
      }
 
 void imprimeCartas(BARALHO baralho, MONTE pilhas[7], FUNDACAO fundacao){
-
-	cout << endl;
-
 	//impressão de número de colunas
 	cout << "\t";
 	for (int cnt=0;cnt<7;cnt++){
@@ -153,18 +165,50 @@ void imprimeCartas(BARALHO baralho, MONTE pilhas[7], FUNDACAO fundacao){
 
 int main (){
 
+// variaveis
 	BARALHO baralho;
 	MONTE pilhas[7];
 	FUNDACAO fundacao;
-	
-    embaralhaCartas(&baralho,&pilhas[0]);
-    imprimeCartas(baralho,pilhas,fundacao);
-	
 	string comando;
-	cout << ">> ";
-    	cin >> comando;
-	interpretar(comando,&pilhas[0],&fundacao);
+	int turno = 0;
+	string mensagem = "Jogo começou";
+	int estado = 1;
+	int ret_interpretar;
 	
-	imprimeCartas(baralho,pilhas,fundacao);
+// inicializacao de jogo
+	embaralhaCartas(&baralho,&pilhas[0]);
+
+	do {
+		cout << "Turno: " << turno << "\t" << mensagem << endl;
+		imprimeCartas(baralho,pilhas,fundacao);
+		cout << endl << ">> ";
+	    	cin >> comando;
+		ret_interpretar = interpretar(comando,&pilhas[0]);
+		switch (ret_interpretar){
+			case 0:
+				estado=1;
+				mensagem == "Movendo...";
+				break;
+			case 1:
+				estado=2;
+				mensagem == "Erro de interpretação.";
+				break;				
+			case 3:
+				cout << "Fechando jogo..." << endl;
+				estado =0;
+				break;
+
+		}
+
+	} while (estado != 0);
+
 	return 0;
 }
+
+/*
+para 'estado':
+	0=fim do jogo
+	1=comando interpretado
+	2=comando incorreto
+*/
+
