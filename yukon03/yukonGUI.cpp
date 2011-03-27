@@ -59,8 +59,11 @@ void YUKON_GUI::principal(){
 	QHBoxLayout * hbox = new QHBoxLayout();
 	principal->setLayout(hbox);
 	
-	QLabel * texto1 = new QLabel("Monte 1");
-	hbox->addWidget(texto1);
+	
+	
+	QLabel * monte1 = new QLabel();
+	monte1->setPixmap(QPixmap(QString("figuras/carta.png")));
+	hbox->addWidget(monte1);
 	
 	QLabel * texto2 = new QLabel("Monte 2");
 	hbox->addWidget(texto2);
