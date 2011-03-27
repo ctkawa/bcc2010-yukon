@@ -6,6 +6,8 @@
 #include <QMenuBar>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QWidget>
+#include <QBoxLayout>
 #include <QLabel>
 
 class YUKON_GUI : public YUKON, public QObject {
