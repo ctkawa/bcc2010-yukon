@@ -3,17 +3,20 @@
 #include <QObject>
 #include <QApplication>
 #include <QMainWindow>
-#include <qmenubar.h>
+#include <QMenuBar>
 #include <QToolBar>
-#include <qstatusbar.h>
+#include <QStatusBar>
+#include <QLabel>
 
 class YUKON_GUI : public YUKON, public QObject {
+	
 private:
 	QApplication * app;
 	QMainWindow * window;
 	void menu();
 	void toolbar();
 	void status();
+	void principal();
 public:
 	YUKON_GUI();
 	int run(int, char **);
