@@ -6,7 +6,7 @@ using namespace std;
 YUKON_GUI::YUKON_GUI()
 	: YUKON(), QObject()
 {
-	
+
 }
 
 int YUKON_GUI::run(int argc, char *argv[]){
@@ -17,6 +17,7 @@ int YUKON_GUI::run(int argc, char *argv[]){
 	menu();
 	toolbar();
 	status();
+	principal();
 	
 	window->show();
 	return app->exec();
@@ -44,11 +45,15 @@ void YUKON_GUI::toolbar(){
 	tb->addAction(acaoNovo);
 }
 
-
 void YUKON_GUI::status(){
 	QStatusBar * sb = window->statusBar();
 	
 	sb->showMessage("Status Bar");
+}
+
+void YUKON_GUI::principal(){
+	QLabel * texto = new QLabel("Ola, ED!");
+	window->setCentralWidget(texto);
 }
 
 void YUKON_GUI::coisa(){
