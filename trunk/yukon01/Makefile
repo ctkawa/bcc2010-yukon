@@ -5,5 +5,5 @@ all:
 	g++ -Wall -c yukon.cpp -o yukon.o
 	g++ -Wall -c monte.cpp -o monte.o
 	g++ -Wall -c fundacao.cpp -o fundacao.o
-	g++ -Wall yukon.o carta.o baralho.o pilha.o monte.o fundacao.o -o yukon.linux
+	g++ -Wall yukon.o carta.o baralho.o pilha.o monte.o fundacao.o -o yukon.exe
 
