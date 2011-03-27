@@ -34,8 +34,8 @@ YUKON 03:
 			qmake
 			make
 		
-		windows: a ver
+		windows: vendo...
 	
 	Uso:
-		P/ interface texto: yukon.exe
-		P/ interface gráfica: yukon.exe g
+		P/ interface texto: yukon.exe t
+		P/ interface gráfica: yukon.exe
