@@ -57,31 +57,18 @@ void YUKON_GUI::principal(){
 	window->setCentralWidget(principal);
 	
 	QHBoxLayout * hbox = new QHBoxLayout();
+	hbox->setSpacing(20);
 	principal->setLayout(hbox);
 	
 	
-	
-	QLabel * monte1 = new QLabel();
-	monte1->setPixmap(QPixmap(QString("figuras/carta.png")));
-	hbox->addWidget(monte1);
-	
-	QLabel * texto2 = new QLabel("Monte 2");
-	hbox->addWidget(texto2);
-	
-	QLabel * texto3 = new QLabel("Monte 3");
-	hbox->addWidget(texto3);
-	
-	QLabel * texto4 = new QLabel("Monte 4");
-	hbox->addWidget(texto4);
-	
-	QLabel * texto5 = new QLabel("Monte 5");
-	hbox->addWidget(texto5);
-	
-	QLabel * texto6 = new QLabel("Monte 6");
-	hbox->addWidget(texto6);
-	
-	QLabel * texto7 = new QLabel("Monte 7");
-	hbox->addWidget(texto7);
+	QLabel * montes[7];
+	for(int i=0; i<7; i++){
+		montes[i] = new QLabel();
+		montes[i]->setPixmap(
+			QPixmap(QString("figuras/carta.gif"))
+		);
+		hbox->addWidget(montes[i]);
+	}
 	
 	QLabel * texto8 = new QLabel("Fundacao");
 	hbox->addWidget(texto8);
