@@ -1,0 +1,41 @@
+LEIA-ME: Arquivo de Log de Modificações no projeto
+
+YUKON 01:
+	Descrição:
+	> Criação da lógica do jogo e da interface de texto
+	
+	Compilação:
+		linux: comando make;
+		windows: comando make ou vide IDE
+		
+	Uso:
+		executar o programa yukon.exe
+		
+YUKON 02:
+	Descrição:
+	> Divisão do programa em módulos independentes
+	> Separação da lógica do programa da interface
+	
+	Compilação:
+		linux: comando make;
+		windows: comando make ou vide IDE
+	
+	Uso:
+		executar o programa yukon.exe
+		
+YUKON 03:
+	Descrição:
+	> Adição do módulo de interface gráfica (Qt)
+	> Lógica do programa passada por herança e não mais por subobjeto;
+	
+	Compilação:
+		linux: Necessita da biblioteca do Qt
+			qmake -project
+			qmake
+			make
+		
+		windows: a ver
+	
+	Uso:
+		P/ interface texto: yukon.exe
+		P/ interface gráfica: yukon.exe g
