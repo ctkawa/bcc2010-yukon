@@ -53,33 +53,24 @@ void YUKON_GUI::status(){
 
 void YUKON_GUI::principal(){
 	
-	QWidget * principal = new QWidget();
+	QFrame * principal = new QFrame();
 	window->setCentralWidget(principal);
 	
 	QHBoxLayout * hbox = new QHBoxLayout();
-	hbox->setSpacing(0);
 	principal->setLayout(hbox);
 	
 	QWidget * w;
-	QVBoxLayout * vbox;
-	QWidget * w2;
-	QHBoxLayout * box;
+	QLabel * box;
 	
 	for(int i=0; i<7; i++){
 		w = new QWidget();
 		hbox->addWidget(w);
 		
-		vbox = new QVBoxLayout();
-		w->setLayout(vbox);
-		
-		//QPoint p(0,0);
 		for(int j=0; j<getMonteTam(i); j++){
-			w2 = new QWidget();
-			vbox->addWidget(w2, 0, Qt::AlignTop );
-			w2->move(0, 0);
 			
-			box = getImagemCarta(getMonteCarta(i,j));
-			w2->setLayout(box);
+			box = getImagemCarta(w, getMonteCarta(i,j));
+			box->setGeometry(0, j*20, 30, 30);
+			box->show();
 		}
 	}
 	
@@ -88,10 +79,10 @@ void YUKON_GUI::principal(){
 }
 
 
-QHBoxLayout * YUKON_GUI::getImagemCarta(CARTA c){
+QLabel * YUKON_GUI::getImagemCarta(QWidget *w, CARTA c){
 	QHBoxLayout * box = new QHBoxLayout();
 	
-	QLabel * naipe = new QLabel();
+	QLabel * naipe = new QLabel(w);
 	
 	if(c.getNaipe() == 'P')
 		naipe->setPixmap(
@@ -126,7 +117,7 @@ QHBoxLayout * YUKON_GUI::getImagemCarta(CARTA c){
 	);
 	box->addWidget(valor);
 			
-	return box;
+	return naipe;
 }
 
 void YUKON_GUI::coisa(){

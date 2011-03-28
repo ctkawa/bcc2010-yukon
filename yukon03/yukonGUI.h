@@ -20,7 +20,7 @@ private:
 	void toolbar();
 	void status();
 	void principal();
-	QHBoxLayout * getImagemCarta(CARTA);
+	QLabel * getImagemCarta(QWidget*, CARTA);
 public:
 	YUKON_GUI();
 	int run(int, char **);
