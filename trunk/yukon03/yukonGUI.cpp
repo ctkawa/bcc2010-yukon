@@ -136,13 +136,13 @@ void GUI_CARTA::setCarta(CARTA c){
 	
 	if(c.getNaipe() && c.getValor()){
 		char endereco[50];
-		sprintf(endereco, "figuras/classic-cards/%c%d.png", c.getNaipe(), c.getValor() );
+		sprintf(endereco, "./figuras/classic-cards/%c%d.png", c.getNaipe(), c.getValor() );
 		setPixmap(QPixmap(endereco));
 	}
 	else if( c.getCor() )
-		setPixmap(QPixmap("figuras/classic-cards/CostasRed.png"));
+		setPixmap(QPixmap("./figuras/classic-cards/CostasRed.png"));
 	else
-		setPixmap(QPixmap("figuras/classic-cards/CostasBlack.png"));
+		setPixmap(QPixmap("./figuras/classic-cards/CostasBlack.png"));
 }
 
 void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
@@ -173,16 +173,16 @@ GUI_FUNDACAO::GUI_FUNDACAO(YUKON_GUI * y)
 		c = new QLabel(this);
 		if(yukon->getFundacao(i)){
 			char s[50];
-			sprintf(s, "figuras/classic-cards/%c%d.png", naipes[i], yukon->getFundacao(i) );
+			sprintf(s, "./figuras/classic-cards/%c%d.png", naipes[i], yukon->getFundacao(i) );
 			c->setPixmap(QPixmap(s));
 		} else if(i<2){
 			c->setPixmap(
-				QPixmap("figuras/classic-cards/CostasRed.png")
+				QPixmap("./figuras/classic-cards/CostasRed.png")
 			);
 		}
 		else {
 				c->setPixmap(
-					QPixmap("figuras/classic-cards/CostasBlack.png")
+					QPixmap("./figuras/classic-cards/CostasBlack.png")
 				);
 		}
 		vbox->addWidget(c);
