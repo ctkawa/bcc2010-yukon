@@ -1,4 +1,5 @@
 #include <yukon.h>
+#include <stdio.h>
 
 #include <QObject>
 #include <QApplication>
@@ -19,6 +20,7 @@ private:
 	void toolbar();
 	void status();
 	void principal();
+	QHBoxLayout * getImagemCarta(CARTA);
 public:
 	YUKON_GUI();
 	int run(int, char **);
