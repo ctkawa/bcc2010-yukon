@@ -39,3 +39,7 @@ YUKON 03:
 	Uso:
 		P/ interface texto: yukon.exe t
 		P/ interface gráfica: yukon.exe
+		
+	Resolver:
+	>> Compilar Qt no windows
+	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
