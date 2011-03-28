@@ -77,8 +77,8 @@ void YUKON_GUI::principal(){
 		}
 	}
 	
-	QLabel * texto8 = new QLabel("Fundacao");
-	hbox->addWidget(texto8);
+	GUI_FUNDACAO * fundacao = new GUI_FUNDACAO(this);
+	hbox->addWidget(fundacao);
 }
 
 bool YUKON_GUI::isSetDe(){
@@ -92,10 +92,8 @@ void YUKON_GUI::setDe(int monte, int carta){
 		deMonte = monte;
 		deCarta = carta;
 		
-		QString s = "Selecinada carta ";
-		s += ('0' + carta);
-		s += "do monte ";
-		s += ('0' + monte);
+		char s[50];
+		sprintf(s, "Selecinada carta %d do monte %d.", carta, monte);
 		window->statusBar()->showMessage(s);
 	}
 }
@@ -121,7 +119,6 @@ void YUKON_GUI::movimenta(int monte){
 void YUKON_GUI::coisa(){
 	cout << "ops!";
 }
-
 
 // =============================
 
@@ -154,5 +151,40 @@ void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
 			yukon->movimenta(monte);
 		else
 			yukon->setDe(monte, ordem);
+	}
+}
+
+GUI_FUNDACAO::GUI_FUNDACAO(YUKON_GUI * y)
+	: QWidget()
+{
+	yukon = y;
+	
+	char naipes[4];
+	naipes[0] = 'C';
+	naipes[1] = 'O';
+	naipes[2] = 'E';
+	naipes[3] = 'P';
+	
+	QVBoxLayout * vbox = new QVBoxLayout();
+	this->setLayout(vbox);
+	QLabel * c;
+	
+	for(int i=0; i<4; i++){
+		c = new QLabel(this);
+		if(yukon->getFundacao(i)){
+			char s[50];
+			sprintf(s, "figuras/classic-cards/%c%d.png", naipes[i], yukon->getFundacao(i) );
+			c->setPixmap(QPixmap(s));
+		} else if(i<2){
+			c->setPixmap(
+				QPixmap("figuras/classic-cards/CostasRed.png")
+			);
+		}
+		else {
+				c->setPixmap(
+					QPixmap("figuras/classic-cards/CostasBlack.png")
+				);
+		}
+		vbox->addWidget(c);
 	}
 }

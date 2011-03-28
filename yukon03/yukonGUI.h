@@ -48,3 +48,11 @@ public:
 	void setCarta(CARTA);
 	void mouseReleaseEvent( QMouseEvent * );
 };
+
+class GUI_FUNDACAO : public QWidget {
+private:
+	YUKON_GUI * yukon;
+public:
+	GUI_FUNDACAO(YUKON_GUI *);
+	//void mouseReleaseEvent( QMouseEvent * );
+};
