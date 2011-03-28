@@ -60,33 +60,26 @@ void YUKON_GUI::principal(){
 	hbox->setSpacing(0);
 	principal->setLayout(hbox);
 	
+	QWidget * w;
+	QVBoxLayout * vbox;
+	QWidget * w2;
+	QHBoxLayout * box;
+	
 	for(int i=0; i<7; i++){
-		QWidget * w = new QWidget();
+		w = new QWidget();
 		hbox->addWidget(w);
 		
-		QVBoxLayout * vbox = new QVBoxLayout();
+		vbox = new QVBoxLayout();
 		w->setLayout(vbox);
 		
 		//QPoint p(0,0);
 		for(int j=0; j<getMonteTam(i); j++){
-			QWidget * w2 = new QWidget();
-			vbox->addWidget(w2);
+			w2 = new QWidget();
+			vbox->addWidget(w2, 0, Qt::AlignTop );
 			w2->move(0, 0);
 			
-			QHBoxLayout * box = new QHBoxLayout();
+			box = getImagemCarta(getMonteCarta(i,j));
 			w2->setLayout(box);
-			
-			QLabel * naipe = new QLabel();
-			naipe->setPixmap(
-				QPixmap(QString("figuras/paus.png"))
-			);
-			box->addWidget(naipe);
-			
-			QLabel * valor = new QLabel();
-			valor->setPixmap(
-				QPixmap(QString("figuras/1p.png"))
-			);
-			box->addWidget(valor);
 		}
 	}
 	
@@ -95,6 +88,46 @@ void YUKON_GUI::principal(){
 }
 
 
+QHBoxLayout * YUKON_GUI::getImagemCarta(CARTA c){
+	QHBoxLayout * box = new QHBoxLayout();
+	
+	QLabel * naipe = new QLabel();
+	
+	if(c.getNaipe() == 'P')
+		naipe->setPixmap(
+			QPixmap("figuras/paus.png").scaled(30,30)
+		);
+	else if(c.getNaipe() == 'E')
+		naipe->setPixmap(
+			QPixmap("figuras/espadas.png").scaled(30,30)
+		);
+	else if(c.getNaipe() == 'C')
+		naipe->setPixmap(
+			QPixmap("figuras/copas.png").scaled(30,30)
+		);
+	else if(c.getNaipe() == 'O')
+		naipe->setPixmap(
+			QPixmap("figuras/ouros.png").scaled(30,30)
+		);
+	else
+		naipe->setPixmap(
+			QPixmap("figuras/0p.png").scaled(30,30)
+		);
+	
+	box->addWidget(naipe);
+	
+	QLabel * valor = new QLabel();
+	
+	char s[50] = "" ;
+	sprintf(s, "figuras/%dp.png", c.getValor());
+	
+	valor->setPixmap(
+		QPixmap(s).scaled(30,30)
+	);
+	box->addWidget(valor);
+			
+	return box;
+}
 
 void YUKON_GUI::coisa(){
 	cout << "ops!";
