@@ -35,11 +35,19 @@ YUKON 03:
 			make
 		
 		windows: vendo...
+			A compilação para windows poderá ser feita apenas desconsiderando-se a biblioteca gráfica Qt.
+			Vou tentar mais adiante uma forma de compilação que faça isso.
 	
 	Uso:
 		P/ interface texto: yukon.exe t
 		P/ interface gráfica: yukon.exe
 		
 	Resolver:
-	>> Compilar Qt no windows
+	>> [Desistido] Compilar Qt no windows
+	>> Compilação separada por sistema operacional. Linux compila versão gráfica e textual, Windows apenas compila a versão textual.
 	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
+	>> Documento descritivo do desenvolvimento do programa.
+	>> Documento de requisitos do programa
+	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
+	>> Resolver tamanho máximo de monte de cartas.
+
