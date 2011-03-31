@@ -7,49 +7,77 @@ YUKON_CLI::YUKON_CLI()
 }
 
 int YUKON_CLI::run(int argc, char *argv[]){
-	imprimeCartas();
 	
+	int estado = 1;
 	string comando;
-	cout << ">> ";
-	cin >> comando;
+	string mensagem = "Jogo começou";
 	
-	interpretar(comando);
-	imprimeCartas();
+	do {
+	
+		imprimeCartas();
+		cout << endl << ">> ";
+		cin >> comando;
+		switch( interpretar(comando) ){
+			case 0:
+				estado=1;
+				mensagem = "Movendo...";
+				break;
+			case 1:
+				estado=2;
+				mensagem = "Erro de interpretação.";
+				break;
+			case 3:
+				estado=0;
+				cout << "Fechando jogo..." << endl;
+				break;
+		}
+	} while (estado != 0);
 	
 	return 0;
 }
 
 void YUKON_CLI::imprimeCartas(){
 	
+	//impressão de número de colunas
+	cout << "\t";
+	for (int cnt=0;cnt<7;cnt++){
+		cout << "__" << cnt << "__" << "\t";
+	}
+	cout << endl;
+	
 	int i,j;
 	//Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
 	for(i=0;i<=10;i++){
+		cout << "  " << i; // linha
+		if (i<10)
+			cout << " ";http://www.mozilla.com/en-US/firefox/about/
+		cout << "|" << "\t";
 		for(j=0;j<=6;j++){
 			if(getMonteTam(j) >= i+1)
 				cout << getMonteCarta(j,i) << "\t";
 			else
 				cout << "\t";
 		}                  
-		cout<<endl;
+		cout << "|" << i << endl;
 		
 	}
 	
 	if(getFundacao(0) == 0)
-		cout << "[C,  ] ";
+		cout << "[♡,  ] ";
 	else
-		cout << "[C, " << getFundacao(0) << "] ";
+		cout << "[♡, " << getFundacao(0) << "] ";
 	if(getFundacao(1) == 0)
-		cout << "[O,  ] ";
+		cout << "[♢,  ] ";
 	else
-		cout << "[O, " << getFundacao(1) << "] ";
+		cout << "[♢, " << getFundacao(1) << "] ";
 	if(getFundacao(2) == 0)
-		cout << "[E,  ] ";
+		cout << "[♠,  ] ";
 	else
-		cout << "[E, " << getFundacao(2) << "] ";
+		cout << "[♠, " << getFundacao(2) << "] ";
 	if(getFundacao(3) == 0)
-		cout << "[P  ] ";
+		cout << "[♣  ] ";
 	else
-		cout << "[P, " << getFundacao(3) << "] ";
+		cout << "[♣, " << getFundacao(3) << "] ";
 	
 	cout << endl;
 }
@@ -62,6 +90,12 @@ void YUKON_CLI::imprimeCartas(){
 //interpretacao e execucao de comando
 //forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
 int YUKON_CLI::interpretar(string cmd){
+	
+	if (cmd == "")
+		return 2;
+	if (cmd=="fechar")
+		return 3;
+	
 	int origemp;	//pilha de origem
 	int origemc;	//carta de origem
 	int destino;	//pilha de destino
