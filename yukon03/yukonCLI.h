@@ -6,5 +6,5 @@ private:
 	void imprimeCartas();
 public:
 	YUKON_CLI();
-	int run(int, char**);
+	int run();
 };

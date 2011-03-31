@@ -6,7 +6,7 @@ YUKON_CLI::YUKON_CLI()
 	
 }
 
-int YUKON_CLI::run(int argc, char *argv[]){
+int YUKON_CLI::run(){
 	
 	int estado = 1;
 	string comando;
@@ -50,7 +50,7 @@ void YUKON_CLI::imprimeCartas(){
 	for(i=0;i<=10;i++){
 		cout << "  " << i; // linha
 		if (i<10)
-			cout << " ";http://www.mozilla.com/en-US/firefox/about/
+			cout << " ";
 		cout << "|" << "\t";
 		for(j=0;j<=6;j++){
 			if(getMonteTam(j) >= i+1)

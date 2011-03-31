@@ -17,7 +17,7 @@ private:
 	void embaralhaCartas();
 public:
 	YUKON();
-	virtual int run(int, char **) = 0;
+	virtual int run() = 0;
 	int getMonteTam(int);
 	CARTA getMonteCarta(int, int);
 	int getFundacao(int);
