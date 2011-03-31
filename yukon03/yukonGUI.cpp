@@ -18,7 +18,7 @@ int YUKON_GUI::run(){
 	
 	menu();
 	toolbar();
-	status();
+	status(NULL);
 	principal();
 	
 	window->show();
@@ -47,15 +47,15 @@ void YUKON_GUI::toolbar(){
 	tb->addAction(acaoNovo);
 }
 
-void YUKON_GUI::status(){
+void YUKON_GUI::status(char * texto = NULL){
 	QStatusBar * sb = window->statusBar();
 	
-	sb->showMessage("Status Bar");
+	sb->showMessage(texto);
 }
 
 void YUKON_GUI::principal(){
 	
-	QWidget *p = new QWidget(window);
+	GUI_PRINCIPAL *p = new GUI_PRINCIPAL(this, window);
 	
 	window->setCentralWidget(p);
 	
@@ -116,7 +116,22 @@ void YUKON_GUI::movimenta(int monte){
 }
 
 void YUKON_GUI::coisa(){
+	
 	cout << "ops!";
+}
+// =============================
+
+GUI_PRINCIPAL::GUI_PRINCIPAL( YUKON_GUI * y, QWidget * window)
+	: QWidget(window)
+{
+	yukon = y;
+}
+
+void GUI_PRINCIPAL::mouseReleaseEvent( QMouseEvent * ev ){
+	if (ev->button() == Qt::LeftButton){
+		yukon->limpaDe();
+		yukon->status(NULL);
+	}
 }
 
 // =============================

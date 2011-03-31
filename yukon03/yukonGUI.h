@@ -16,7 +16,6 @@ private:
 	QMainWindow * window;
 	void menu();
 	void toolbar();
-	void status();
 	void principal();
 	QLabel * getImagemCarta(QWidget*, CARTA);
 	
@@ -26,6 +25,7 @@ private:
 public:
 	YUKON_GUI(int, char **);
 	int run();
+	void status(char *);
 	
 	bool isSetDe();
 	void setDe(int, int);
@@ -34,6 +34,14 @@ public:
 	
 public slots:
 	void coisa(); 
+};
+
+class GUI_PRINCIPAL : public QWidget {
+private:
+	YUKON_GUI * yukon;
+public:
+	GUI_PRINCIPAL( YUKON_GUI *, QWidget *);
+	void mouseReleaseEvent( QMouseEvent * );
 };
 
 class GUI_CARTA : public QLabel {
