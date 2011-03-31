@@ -50,4 +50,5 @@ YUKON 03:
 	>> Documento de requisitos do programa
 	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
 	>> Resolver tamanho máximo de monte de cartas.
+	>> Problemas na GUI ao mover uma carta para um local vazio.
 
