@@ -3,16 +3,15 @@
 #include <iostream>
 using namespace std;
 
-YUKON_GUI::YUKON_GUI()
-	: YUKON(), QObject()
+YUKON_GUI::YUKON_GUI(int argc, char *argv[])
+	: YUKON(), QApplication(argc, argv)
 {
 	deMonte = -1;
 	deCarta = -1;
 }
 
-int YUKON_GUI::run(int argc, char *argv[]){
+int YUKON_GUI::run(){
 	
-	app = new QApplication(argc, argv);
 	window = new QMainWindow();
 	
 	window->setGeometry(100, 100, 800, 600);
@@ -23,7 +22,7 @@ int YUKON_GUI::run(int argc, char *argv[]){
 	principal();
 	
 	window->show();
-	return app->exec();
+	return exec();
 }
 
 void YUKON_GUI::menu(){
@@ -31,7 +30,7 @@ void YUKON_GUI::menu(){
 	
 	QMenu * menuArquivo = mb->addMenu("&Arquivo");
 	
-	QAction * acaoTamanho = new QAction("&Tamanho", app);
+	QAction * acaoTamanho = new QAction("&Tamanho", this);
 	connect(
 		acaoTamanho, SIGNAL(triggered()),
 		this, SLOT(coisa())
@@ -44,7 +43,7 @@ void YUKON_GUI::menu(){
 void YUKON_GUI::toolbar(){
 	QToolBar * tb = window->addToolBar("Padrao");
 	
-	QAction * acaoNovo = new QAction("Novo", app);
+	QAction * acaoNovo = new QAction("Novo", this);
 	tb->addAction(acaoNovo);
 }
 

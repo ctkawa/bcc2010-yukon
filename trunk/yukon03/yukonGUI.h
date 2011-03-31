@@ -1,7 +1,6 @@
 #include <yukon.h>
 #include <stdio.h>
 
-#include <QObject>
 #include <QApplication>
 #include <QMainWindow>
 #include <QMenuBar>
@@ -12,9 +11,8 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-class YUKON_GUI : public YUKON, public QObject {
+class YUKON_GUI : public YUKON, public QApplication {
 private:
-	QApplication * app;
 	QMainWindow * window;
 	void menu();
 	void toolbar();
@@ -26,8 +24,8 @@ private:
 	int deCarta;
 	
 public:
-	YUKON_GUI();
-	int run(int, char **);
+	YUKON_GUI(int, char **);
+	int run();
 	
 	bool isSetDe();
 	void setDe(int, int);
