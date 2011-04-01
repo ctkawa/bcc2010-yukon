@@ -12,16 +12,16 @@ YUKON_GUI::YUKON_GUI(int argc, char *argv[])
 
 int YUKON_GUI::run(){
 	
-	window = new QMainWindow();
+	window = new QMainWindow();			// cria nova janela
 	
-	window->setGeometry(100, 100, 800, 600);
+	window->setGeometry(100, 100, 800, 600);	// redimenciona janela
 	
-	menu();
-	toolbar();
-	status(NULL);
-	principal();
+	menu();	// configura menu
+	toolbar();	// confugura barra de ferramentas
+	status(NULL);	// exibir nada como mensagem na barra de status
+	principal();	// monta tela
 	
-	window->show();
+	window->show();	// torna janela visivel
 	return exec();
 }
 

@@ -30,6 +30,11 @@ int YUKON_CLI::run(){
 				estado=0;
 				cout << "Fechando jogo..." << endl;
 				break;
+			case 4:
+				estado=3;
+				mensagem = "Reiniciar jogo";
+				novoJogo();
+				break;
 		}
 	} while (estado != 0);
 	
@@ -96,6 +101,8 @@ int YUKON_CLI::interpretar(string cmd){
 		return 2;
 	if (cmd=="fechar")
 		return 3;
+	if (cmd=="reset")
+		return 4;
 	
 	int origemp;	//pilha de origem
 	int origemc;	//carta de origem
