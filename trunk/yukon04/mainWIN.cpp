@@ -1,5 +1,5 @@
 #include <iostream>
-#include "yukonCLI.h"
+#include "codigo/yukonCLI.h"
 
 using namespace std;
 
@@ -14,6 +14,4 @@ int main (int argc, char *argv[]){
 	
 	
 	return y->run();			// iniciar jogo
-
-	cout << "Fechando jogo...";
 }
