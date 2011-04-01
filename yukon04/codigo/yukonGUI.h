@@ -31,6 +31,7 @@ public:
 	void setDe(int, int);
 	void limpaDe();
 	void movimenta(int);
+	void movimentaParaFundacao();
 	
 public slots:
 	void coisa(); 
@@ -55,10 +56,20 @@ public:
 	void mouseReleaseEvent( QMouseEvent * );
 };
 
+class GUI_VAZIO : public QLabel {
+private:
+	YUKON_GUI * yukon;
+	int monte;
+	int ordem;
+public:
+	GUI_VAZIO(YUKON_GUI *, QWidget*, int, int);
+	void mouseReleaseEvent( QMouseEvent * );
+};
+
 class GUI_FUNDACAO : public QWidget {
 private:
 	YUKON_GUI * yukon;
 public:
 	GUI_FUNDACAO(YUKON_GUI *);
-	//void mouseReleaseEvent( QMouseEvent * );
+	void mouseReleaseEvent( QMouseEvent * );
 };
