@@ -1,6 +1,6 @@
 #include <iostream>
-#include "codigo/yukonCLI.h"
-#include "codigo/yukonGUI.h"
+#include "yukonCLI.h"
+#include "yukonGUI.h"
 
 using namespace std;
 
