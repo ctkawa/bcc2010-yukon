@@ -26,6 +26,18 @@ void YUKON::embaralhaCartas(){
 	montes[0].add(c);
 }
 
+int YUKON::novoJogo(){
+	BARALHO nbaralho;
+	MONTE nmontes;
+	FUNDACAO nfundacao;
+	baralho = nbaralho;
+	for(int i=0; i<7;i++)
+		montes[i] = nmontes;
+	fundacao = nfundacao;
+	embaralhaCartas();
+	return 0;
+}
+
 int YUKON::getMonteTam(int monte){
 	return montes[monte].getTamanho();
 }
