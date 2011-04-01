@@ -59,8 +59,13 @@ bool YUKON::mover(int origemp, int origemc, int destino){
 }
 
 bool YUKON::moverParaFundacao(int origemp, int origemc){
-	if(fundacao.addCarta(montes[origemp].getCarta(origemc)))
-		if(montes[origemp].remover(origemc))
-			return true;
+	cout << montes[origemp].getTamanho() << endl;
+	cout << origemc << endl;
+	cout << "==\n";
+	
+	if(montes[origemp].getTamanho() -1 == origemc)
+		if(fundacao.addCarta(montes[origemp].getCarta(origemc)))
+			if(montes[origemp].remover(origemc))
+				return true;
 	return false;
 }

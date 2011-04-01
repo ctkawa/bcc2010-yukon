@@ -64,16 +64,21 @@ void YUKON_GUI::principal(){
 	
 	QWidget * w;
 	GUI_CARTA * box;
+	GUI_VAZIO * vazio;
 	
 	for(int i=0; i<7; i++){
 		w = new QWidget();
 		hbox->addWidget(w);
+		
+		vazio = new GUI_VAZIO(this, w, i, 0);
+		vazio->show();
 		
 		for(int j=0; j<getMonteTam(i); j++){
 			box = new GUI_CARTA(this, w, i, j);
 			box->setCarta(getMonteCarta(i,j));
 			box->show();
 		}
+		
 	}
 	
 	GUI_FUNDACAO * fundacao = new GUI_FUNDACAO(this);
@@ -105,6 +110,19 @@ void YUKON_GUI::limpaDe(){
 void YUKON_GUI::movimenta(int monte){
 	if(isSetDe()){
 		if(mover(deMonte, deCarta, monte)){
+			QString s = "Movido com sucesso";
+			window->statusBar()->showMessage(s, 5000);
+		} else
+			window->statusBar()->showMessage("Movimento inválido", 5000);
+		
+		principal();
+	}
+	limpaDe();
+}
+
+void YUKON_GUI::movimentaParaFundacao(){
+	if(isSetDe()){
+		if(moverParaFundacao(deMonte, deCarta)){
 			QString s = "Movido com sucesso";
 			window->statusBar()->showMessage(s, 5000);
 		} else
@@ -153,10 +171,8 @@ void GUI_CARTA::setCarta(CARTA c){
 		sprintf(endereco, "./figuras/classic-cards/%c%d.png", c.getNaipe(), c.getValor() );
 		setPixmap(QPixmap(endereco));
 	}
-	else if( c.getCor() )
-		setPixmap(QPixmap("./figuras/classic-cards/CostasRed.png"));
 	else
-		setPixmap(QPixmap("./figuras/classic-cards/CostasBlack.png"));
+		setPixmap(QPixmap("./figuras/classic-cards/CostasRed.png"));
 }
 
 void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
@@ -167,6 +183,28 @@ void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
 			yukon->setDe(monte, ordem);
 	}
 }
+
+// =============================
+
+GUI_VAZIO::GUI_VAZIO(YUKON_GUI * y, QWidget * w, int m, int c)
+: QLabel(w)
+{
+	monte = m;
+	ordem = 0;
+	yukon = y;
+	
+	setGeometry(0, ordem*20, 100, 100);
+	setPixmap(QPixmap("./figuras/classic-cards/vazio.png"));
+}
+
+void GUI_VAZIO::mouseReleaseEvent( QMouseEvent * ev){
+	if (ev->button() == Qt::LeftButton){
+		if(yukon->isSetDe())
+			yukon->movimenta(monte);
+	}
+}
+
+//==============================================
 
 GUI_FUNDACAO::GUI_FUNDACAO(YUKON_GUI * y)
 	: QWidget()
@@ -189,16 +227,21 @@ GUI_FUNDACAO::GUI_FUNDACAO(YUKON_GUI * y)
 			char s[50];
 			sprintf(s, "./figuras/classic-cards/%c%d.png", naipes[i], yukon->getFundacao(i) );
 			c->setPixmap(QPixmap(s));
-		} else if(i<2){
+		} else {
 			c->setPixmap(
 				QPixmap("./figuras/classic-cards/CostasRed.png")
 			);
 		}
-		else {
-				c->setPixmap(
-					QPixmap("./figuras/classic-cards/CostasBlack.png")
-				);
-		}
+
 		vbox->addWidget(c);
 	}
 }
+
+
+void GUI_FUNDACAO::mouseReleaseEvent( QMouseEvent * ev){
+	if (ev->button() == Qt::LeftButton){
+		if(yukon->isSetDe())
+			yukon->movimentaParaFundacao();
+	}
+}
+
