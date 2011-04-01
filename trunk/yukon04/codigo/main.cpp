@@ -19,6 +19,4 @@ int main (int argc, char *argv[]){
 		y = new YUKON_GUI(argc, argv);
 	
 	return y->run();			// iniciar jogo
-
-	cout << "Fechando jogo...";
 }

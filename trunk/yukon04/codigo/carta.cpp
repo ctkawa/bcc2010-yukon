@@ -93,7 +93,7 @@ ostream &operator<<(ostream & out, CARTA c ){
 	if(c.getVisivel()) {
 		out << "[" ;
 		if (c.getNaipe()=='C'){
-			out << "♡";}			// se nao tiver visivel usar ♥ e ♦
+			out << "♡";}			// se nao tiver visibilidade usar ♥ e ♦
 			else if (c.getNaipe()=='O'){
 				out << "♢";}
 				else if (c.getNaipe()=='P'){
@@ -102,9 +102,23 @@ ostream &operator<<(ostream & out, CARTA c ){
 						out << "♠";}
 						else{
 							cout << "tem algo errado na carta...";}
-							if (c.getValor()<10)
+							if (c.getValor()!=10)
 								out << " ";
-							out << c.getValor() << "]";
+							if (c.getValor()<=10)
+								out << c.getValor() << "]";
+							else {
+								switch (c.getValor()){
+								case(11):
+									out << "J]";
+									break;
+								case(12):
+									out << "Q]";
+									break;
+								case(13):
+									out << "K]";
+									break;
+								}
+							}
 	} else
 		out << "[?,?]";
 	return out;
