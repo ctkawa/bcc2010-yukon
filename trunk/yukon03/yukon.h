@@ -18,7 +18,8 @@ private:
 public:
 	YUKON();
 	virtual int run() = 0;
-	int getMonteTam(int);
+	int getMonteTam(int);		// retorna o num carta de um certo monte
+	int getMaxMonteTam();		// retorna o num carta de maior monte
 	CARTA getMonteCarta(int, int);
 	int getFundacao(int);
 	bool mover(int, int, int);
