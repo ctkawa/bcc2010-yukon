@@ -23,6 +23,7 @@ public:
 	CARTA getMonteCarta(int, int);
 	int getFundacao(int);
 	bool mover(int, int, int);
+	bool moverParaFundacao(int, int);
 };
 
 #endif
