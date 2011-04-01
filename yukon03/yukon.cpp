@@ -30,6 +30,19 @@ int YUKON::getMonteTam(int monte){
 	return montes[monte].getTamanho();
 }
 
+int YUKON::getMaxMonteTam(){
+	int ret=0;
+	int n=-1;
+	for(int i=0; i<7;i++){
+		if (getMonteTam(i)>ret){
+			ret = getMonteTam(i);
+			n = i;
+		}
+	}
+	//cout <<"maxmont: n" << n;
+	return ret;
+}
+
 CARTA YUKON::getMonteCarta(int monte, int carta){
 	return montes[monte].getCarta(carta);
 }

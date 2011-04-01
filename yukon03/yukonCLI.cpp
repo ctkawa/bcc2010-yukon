@@ -36,8 +36,10 @@ int YUKON_CLI::run(){
 	return 0;
 }
 
+
+
 void YUKON_CLI::imprimeCartas(){
-	
+
 	//impressão de número de colunas
 	cout << "\t";
 	for (int cnt=0;cnt<7;cnt++){
@@ -46,11 +48,10 @@ void YUKON_CLI::imprimeCartas(){
 	cout << endl;
 	
 	int i,j;
-	//Verificar e CORRIGIR o tamanho mínimo de uma coluna e substituir o valor final de "i"
-	for(i=0;i<=10;i++){
+	for(i=0;i<getMaxMonteTam();i++){
 		cout << "  " << i; // linha
 		if (i<10)
-			cout << " ";
+			cout << " ";		// espacamento para numeros de um digito
 		cout << "|" << "\t";
 		for(j=0;j<=6;j++){
 			if(getMonteTam(j) >= i+1)
@@ -112,20 +113,22 @@ int YUKON_CLI::interpretar(string cmd){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
+
+	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	
 	if (origemp>7||origemp<0||destino>8||destino<0) {
 		cout << "origem ou destino e incorreto!" << endl;
 		return 1;
 	}
 	if (getMonteTam(origemp)<0)
-		cout << "monte nao possui nenhuma carta!";
-	if(origemp == origemc)
-		cout<< "Coluna de origem igual coluna de destino";
+		cout << "monte nao possui nenhuma carta!" << endl;
+	if(origemp == destino)
+		cout<< "Coluna de origem igual coluna de destino" << endl;
 	else
 		if (mover(origemp, origemc, destino)){
-			cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
+			//cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 		} else
-			cout << "Esse movimento nao eh possivel."<<endl;
+			cout << "Esse movimento nao é possivel."<<endl;
 		
 		
 		
