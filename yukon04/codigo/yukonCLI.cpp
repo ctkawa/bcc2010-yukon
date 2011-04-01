@@ -113,8 +113,11 @@ int YUKON_CLI::interpretar(string cmd){
 		cout << "formato de comando incorreto!" << endl;
 		return 1;
 	}
-
-	cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
+	
+	if(destino==8)
+		cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a fundamento " << endl;
+	else
+		cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	
 	if (origemp>7||origemp<0||destino>8||destino<0) {
 		cout << "origem ou destino e incorreto!" << endl;
@@ -125,12 +128,13 @@ int YUKON_CLI::interpretar(string cmd){
 	if(origemp == destino)
 		cout<< "Coluna de origem igual coluna de destino" << endl;
 	else
-		if (mover(origemp, origemc, destino)){
-			//cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
-		} else
-			cout << "Esse movimento nao é possivel."<<endl;
-		
-		
+		if (destino==8){
+			if(!moverParaFundacao(origemp, origemc))
+				cout << "Esse movimento não é possível." <<  endl;
+		} else {
+			if (!mover(origemp, origemc, destino))
+				cout << "Esse movimento nao é possivel."<<endl;
+		}
 		
 		/*cout << "pos1=" << posvirg1 << endl;
 		 * cout << "pos2=" << posvirg2 << endl;*/

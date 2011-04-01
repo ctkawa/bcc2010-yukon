@@ -57,3 +57,10 @@ bool YUKON::mover(int origemp, int origemc, int destino){
 			return true;
 	return false;
 }
+
+bool YUKON::moverParaFundacao(int origemp, int origemc){
+	if(fundacao.addCarta(montes[origemp].getCarta(origemc)))
+		if(montes[origemp].remover(origemc))
+			return true;
+	return false;
+}
