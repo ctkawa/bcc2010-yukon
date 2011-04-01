@@ -44,11 +44,32 @@ YUKON 03:
 		
 	Resolver:
 	>> [Desistido] Compilar Qt no windows
-	>> Compilação separada por sistema operacional. Linux compila versão gráfica e textual, Windows apenas compila a versão textual.
+	>> [Desistido] Compilação separada por sistema operacional. Linux compila versão gráfica e textual, Windows apenas compila a versão textual.
 	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
 	>> Documento descritivo do desenvolvimento do programa.
 	>> Documento de requisitos do programa
 	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
 	>> Resolver tamanho máximo de monte de cartas.
-	>> Problemas na GUI ao mover uma carta para um local vazio.
+	>> [Resolvido] Problemas na GUI ao mover uma carta para um local vazio.
 
+YUKON 4:
+	Descrição:
+	> Completar a lista de funções disponíveis
+	> Windows não suportado mais
+	
+	Compilação:
+		linux: usa qt
+			qmake -project
+			qmake
+			make
+		
+	Uso:
+		idem
+	
+	Resolver:
+	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
+	>> Documento descritivo do desenvolvimento do programa.
+	>> Documento de requisitos do programa
+	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
+	>> Resolver tamanho máximo de monte de cartas (CLI ok, GUI [pôr barra de rolagem]).
+	>> Rever implementação de objetos básicos: PILHA, MONTE, CARTA, etc.
