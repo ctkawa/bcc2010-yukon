@@ -99,9 +99,9 @@ int YUKON_CLI::interpretar(string cmd){
 	
 	if (cmd == "")
 		return 2;
-	if (cmd=="fechar")
+	if (cmd=="fechar"||cmd=="exit")
 		return 3;
-	if (cmd=="reset")
+	if (cmd=="novojogo"||cmd=="reset")
 		return 4;
 	
 	int origemp;	//pilha de origem
