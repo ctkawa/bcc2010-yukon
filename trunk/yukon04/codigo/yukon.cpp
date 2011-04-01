@@ -52,9 +52,11 @@ int YUKON::getFundacao(int monte){
 }
 
 bool YUKON::mover(int origemp, int origemc, int destino){
+	if (origemp != destino) {
 	if(montes[destino].receberCartas(montes[origemp],origemc))
 		if(montes[origemp].remover(origemc))
 			return true;
+	}
 	return false;
 }
 
