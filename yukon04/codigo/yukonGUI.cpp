@@ -1,4 +1,4 @@
-include "yukonGUI.h"
+#include "yukonGUI.h"
 
 #include <iostream>
 using namespace std;

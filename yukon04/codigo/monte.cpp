@@ -26,19 +26,28 @@ CARTA MONTE::getCarta( int posicao ){
 	 return pilha.setVisivelTrue(posicao);
  }
  
- bool MONTE::receberCartas( MONTE m, int posicao ){
-	 CARTA cNova = m.getCarta(posicao);
-	 CARTA cTopo = pilha.getCarta(pilha.getTamanho()-1);
-	 
-	 if(cNova.getValor() == cTopo.getValor() - 1 &&
-		 cNova.getCor() != cTopo.getCor() )
-	 {
-		 for(int i=posicao; i<m.getTamanho(); i++)
-			 pilha.add(m.getCarta(i));
-		 return true;
-	 }
-	 
-	 return false;
+ bool MONTE::receberCartas( MONTE m, int posicao ){	//este monte recebe cartas de monte m a partir de pos p
+	if (getTamanho()!=0){
+		CARTA cNova = m.getCarta(posicao);
+		CARTA cTopo = pilha.getCarta(pilha.getTamanho()-1);
+
+		if(cNova.getValor() == cTopo.getValor() - 1 &&
+			cNova.getCor() != cTopo.getCor() )
+		{
+			for(int i=posicao; i<m.getTamanho(); i++)
+				pilha.add(m.getCarta(i));
+			return true;
+		}
+		return false;
+	} else {
+		CARTA cNova = m.getCarta(posicao);
+		if(cNova.getValor()==13){
+			for(int i=posicao; i<m.getTamanho(); i++)
+				pilha.add(m.getCarta(i));
+			return true;
+		} else
+			return false;
+	}
 }
 
 ostream &operator<<( ostream & out, MONTE p){
