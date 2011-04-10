@@ -54,7 +54,7 @@ YUKON 03:
 
 YUKON 4:
 	Descrição:
-	> Completar a lista de funções disponíveis
+	> Adição novas funções
 	> Windows não suportado mais
 	
 	Compilação:
@@ -73,3 +73,21 @@ YUKON 4:
 	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
 	>> Resolver tamanho máximo de monte de cartas (CLI ok, GUI [pôr barra de rolagem]).
 	>> Rever implementação de objetos básicos: PILHA, MONTE, CARTA, etc.
+	
+YUKON 5:
+	Descrição:
+	> Adição de novas funções
+	> Reescrita do programa utilizando ponteiros para subobjetos (menos métodos para manipular)
+	
+	Compilação:
+		linux: usa qt
+			qmake -project && qmake && make
+		
+	Resolver:
+	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
+	>> Documento descritivo do desenvolvimento do programa.
+	>> Documento de requisitos do programa
+	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
+	>> Resolver tamanho máximo de monte de cartas (CLI ok, GUI [pôr barra de rolagem]).
+	>> Rever implementação de objetos básicos: PILHA, MONTE, CARTA, etc.
+	
