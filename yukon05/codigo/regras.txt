@@ -1,0 +1,31 @@
+Regras do Yukon:
+
+-Objetivo:
+O objetivo do jogo é mover todas as cartas para as quatro fundações, do Às para o K,
+de mesmo naipe.
+
+-O jogo:
+Usando um baralho,cartas são distribuídas em sete colunas.Cada coluna recebe uma carta
+virada para baixo a mais do que a anterior, começando com 0 na primeira coluna.Depois,
+a primeira coluna recebe uma carta virada para cima, e as outras colunas 5 cartas cada.
+
+-Fundações:
+Fundações são pilhas construídas em ordem crescente e de mesmo naipe, começando pelo Às e 
+acabando pelo Rei.Por exemplo, um dois de espadas pode ser botado em um Às de espadas, e
+então um 3 de espadas, e a seguir 4,5,6,7,8,9,10,J,Q,K, até o K de espadas.
+O funcionamento é o mesmo para às outras fundações.
+
+-Colunas:
+As colunas são construídas em alternância de cores, em ordem decrescente.Por exemplo, um 6
+de naipe vermelho pode ser colocado em um 7 de naipe preto.
+
+Qualquer quantidade de cartas pode ser movida para outra coluna, seguida a regra acima,não
+importando se as cartas que estão sendo movidas estão em sequência.Por exemplo, um 6 de
+naipe vermelho pode estar seguido de um K e um 2(devido à distribuição inicial do jogo).
+Essas três cartas podem ser movidas para um 7 de naipe preto.
+
+A carta do topo da coluna pode ser movida para outra coluna ou movida para a fundação.
+Quando uma carta virada para baixo se torna a carta do topo, ela é virada para cima.
+
+Colunas vazias podem ser preenchidas com um K, seguidos ou não de outras cartas.
+
