@@ -16,8 +16,6 @@ int YUKON_GUI::run(){
 	
 	window->setGeometry(100, 100, 800, 600);
 	
-	menu();
-	toolbar();
 	status(NULL);
 	principal();
 	
@@ -53,26 +51,6 @@ void YUKON_GUI::principal(){
 	QLabel * lComNovo = new GUI_BOTAO(this, wComandos, "novo");
 	lComNovo->setText("Novo");
 	comHbox->addWidget(lComNovo);
-	
-	QLabel * lComSalvar = new QLabel();
-	lComSalvar->setText("Salvar...");
-	comHbox->addWidget(lComSalvar);
-	
-	QLabel * lComCarregar = new QLabel();
-	lComCarregar->setText("Carregar...");
-	comHbox->addWidget(lComCarregar);
-	
-	QLabel * lComDesfazer = new QLabel();
-	lComDesfazer->setText("Desfazer");
-	comHbox->addWidget(lComDesfazer);
-	
-	QLabel * lComAjuda = new QLabel();
-	lComAjuda->setText("Ajuda");
-	comHbox->addWidget(lComAjuda);
-	
-	QLabel * lComSobre = new QLabel();
-	lComSobre->setText("Sobre");
-	comHbox->addWidget(lComSobre);
 	
 	// cartas
 	
