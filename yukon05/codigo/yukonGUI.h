@@ -14,8 +14,6 @@
 class YUKON_GUI : public YUKON, public QApplication {
 private:
 	QMainWindow * window;
-	void menu();
-	void toolbar();
 	void principal();
 	QLabel * getImagemCarta(QWidget*, CARTA);
 	
@@ -33,8 +31,10 @@ public:
 	void movimenta(int);
 	void movimentaParaFundacao();
 	
-public slots:
-	void coisa(); 
+	void novoJogo();
+	
+private slots:
+	void coisa();
 };
 
 class GUI_PRINCIPAL : public QWidget {
@@ -72,5 +72,14 @@ private:
 	FUNDACAO * fundacao;
 public:
 	GUI_FUNDACAO(YUKON_GUI *);
+	void mouseReleaseEvent( QMouseEvent * );
+};
+
+class GUI_BOTAO : public QLabel{
+private:
+	YUKON_GUI * yukon;
+	string funcao;
+public:
+	GUI_BOTAO(YUKON_GUI *, QWidget*, string);
 	void mouseReleaseEvent( QMouseEvent * );
 };
