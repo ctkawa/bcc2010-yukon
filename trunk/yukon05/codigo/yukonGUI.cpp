@@ -25,28 +25,6 @@ int YUKON_GUI::run(){
 	return exec();
 }
 
-void YUKON_GUI::menu(){
-	QMenuBar * mb = window->menuBar();
-	
-	QMenu * menuArquivo = mb->addMenu("&Arquivo");
-	
-	QAction * acaoTamanho = new QAction("&Tamanho", this);
-	connect(
-		acaoTamanho, SIGNAL(triggered()),
-		this, SLOT(coisa())
-	);
-	
-	menuArquivo->addAction(acaoTamanho);
-	
-}
-
-void YUKON_GUI::toolbar(){
-	QToolBar * tb = window->addToolBar("Padrao");
-	
-	QAction * acaoNovo = new QAction("Novo", this);
-	tb->addAction(acaoNovo);
-}
-
 void YUKON_GUI::status(char * texto = NULL){
 	QStatusBar * sb = window->statusBar();
 	
@@ -61,8 +39,48 @@ void YUKON_GUI::principal(){
 	
 	window->setCentralWidget(p);
 	
+	QVBoxLayout * vbox = new QVBoxLayout();
+	p->setLayout(vbox);
+	
+	// comandos
+	
+	QWidget * wComandos = new QWidget();
+	vbox->addWidget(wComandos);
+	
+	QHBoxLayout * comHbox = new QHBoxLayout();
+	wComandos->setLayout(comHbox);
+	
+	QLabel * lComNovo = new GUI_BOTAO(this, wComandos, "novo");
+	lComNovo->setText("Novo");
+	comHbox->addWidget(lComNovo);
+	
+	QLabel * lComSalvar = new QLabel();
+	lComSalvar->setText("Salvar...");
+	comHbox->addWidget(lComSalvar);
+	
+	QLabel * lComCarregar = new QLabel();
+	lComCarregar->setText("Carregar...");
+	comHbox->addWidget(lComCarregar);
+	
+	QLabel * lComDesfazer = new QLabel();
+	lComDesfazer->setText("Desfazer");
+	comHbox->addWidget(lComDesfazer);
+	
+	QLabel * lComAjuda = new QLabel();
+	lComAjuda->setText("Ajuda");
+	comHbox->addWidget(lComAjuda);
+	
+	QLabel * lComSobre = new QLabel();
+	lComSobre->setText("Sobre");
+	comHbox->addWidget(lComSobre);
+	
+	// cartas
+	
+	QWidget * wCartas = new QWidget();
+	vbox->addWidget(wCartas);
+	
 	QHBoxLayout * hbox = new QHBoxLayout();
-	p->setLayout(hbox);
+	wCartas->setLayout(hbox);
 	
 	QWidget * w;
 	MONTE * monte;
@@ -148,6 +166,12 @@ void YUKON_GUI::coisa(){
 	
 	cout << "ops!";
 }
+
+void YUKON_GUI::novoJogo(){
+	YUKON::novoJogo();
+	principal();
+}
+
 // =============================
 
 GUI_PRINCIPAL::GUI_PRINCIPAL( YUKON_GUI * y, QWidget * window)
@@ -257,3 +281,20 @@ void GUI_FUNDACAO::mouseReleaseEvent( QMouseEvent * ev){
 	}
 }
 
+//===================================================
+
+GUI_BOTAO::GUI_BOTAO(YUKON_GUI * y, QWidget * w, string s)
+: QLabel(w) {
+	yukon = y;
+	
+	if(s == "novo" || s=="salvar" || s=="carregar" || s=="desfazer" || s=="sobre" || s=="ajuda")
+		funcao = s;
+}
+
+void GUI_BOTAO::mouseReleaseEvent( QMouseEvent * ev){
+	if( ev->button() == Qt::LeftButton){
+		if(funcao == "novo"){
+			yukon->novoJogo();
+		}
+	}
+}
