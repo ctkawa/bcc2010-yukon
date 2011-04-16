@@ -23,7 +23,7 @@ private:
 public:
 	YUKON_GUI(int, char **);
 	int run();
-	void status(char *);
+	void status(QString);
 	
 	bool isSetDe();
 	void setDe(int, int);
