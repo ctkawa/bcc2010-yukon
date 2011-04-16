@@ -1,6 +1,9 @@
 #include "yukonGUI.h"
 
 #include <iostream>
+
+#include <unistd.h>
+
 using namespace std;
 
 YUKON_GUI::YUKON_GUI(int argc, char *argv[])
@@ -8,6 +11,7 @@ YUKON_GUI::YUKON_GUI(int argc, char *argv[])
 {
 	monteOrigem = -1;
 	cartaOrigem = -1;
+	
 }
 
 int YUKON_GUI::run(){
@@ -16,16 +20,15 @@ int YUKON_GUI::run(){
 	
 	window->setGeometry(100, 100, 800, 600);
 	
-	status(NULL);
+	status(QCoreApplication::applicationDirPath());
 	principal();
 	
 	window->show();
 	return exec();
 }
 
-void YUKON_GUI::status(char * texto = NULL){
+void YUKON_GUI::status(QString texto = NULL){
 	QStatusBar * sb = window->statusBar();
-	
 	sb->showMessage(texto);
 }
 
@@ -51,6 +54,10 @@ void YUKON_GUI::principal(){
 	QLabel * lComNovo = new GUI_BOTAO(this, wComandos, "novo");
 	lComNovo->setText("Novo");
 	comHbox->addWidget(lComNovo);
+	
+	QLabel * lComSair = new GUI_BOTAO(this, wComandos, "sair");
+	lComSair->setText("Sair");
+	comHbox->addWidget(lComSair);
 	
 	// cartas
 	
@@ -178,14 +185,23 @@ GUI_CARTA::GUI_CARTA(YUKON_GUI * y, QWidget * w, int m, int c)
 }
 
 void GUI_CARTA::setCarta(CARTA * carta){
-	
 	if(carta->getNaipe() && carta->getValor()){
-		char endereco[50];
-		sprintf(endereco, "./figuras/classic-cards/%c%d.png", carta->getNaipe(), carta->getValor() );
+		QString endereco = QCoreApplication::applicationDirPath();
+		
+		endereco.append("/figuras/classic-cards/");
+		endereco.append(carta->getNaipe());
+		char s[3];
+		sprintf(s, "%d", carta->getValor());
+		endereco.append(s);
+		endereco.append(".png");
+		setPixmap(QPixmap(endereco));
+		yukon->status(endereco);
+	}
+	else {
+		QString endereco = QCoreApplication::applicationDirPath();
+		endereco.append("/figuras/classic-cards/CostasRed.png");
 		setPixmap(QPixmap(endereco));
 	}
-	else
-		setPixmap(QPixmap("./figuras/classic-cards/CostasRed.png"));
 }
 
 void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
@@ -207,7 +223,10 @@ GUI_VAZIO::GUI_VAZIO(YUKON_GUI * y, QWidget * w, int m)
 	yukon = y;
 	
 	setGeometry(0, ordem*20, 100, 100);
-	setPixmap(QPixmap("./figuras/classic-cards/vazio.png"));
+	
+	QString endereco = QCoreApplication::applicationDirPath();
+	endereco.append("/figuras/classic-cards/vazio.png");
+	setPixmap(QPixmap(endereco));
 }
 
 void GUI_VAZIO::mouseReleaseEvent( QMouseEvent * ev){
@@ -238,19 +257,22 @@ GUI_FUNDACAO::GUI_FUNDACAO(YUKON_GUI * y)
 	for(int i=0; i<4; i++){
 		c = new QLabel(this);
 		if(fundacao->getMonte(i)){
-			char s[50];
-			sprintf(s, "./figuras/classic-cards/%c%d.png", naipes[i], fundacao->getMonte(i) );
-			c->setPixmap(QPixmap(s));
+			QString endereco = QCoreApplication::applicationDirPath();
+			endereco.append("/figuras/classic-cards/");
+			endereco.append(naipes[i]);
+			char s[3];
+			sprintf(s, "%d", fundacao->getMonte(i) );
+			endereco.append(s);
+			endereco.append(".png");
+			c->setPixmap(QPixmap(endereco));
 		} else {
-			c->setPixmap(
-				QPixmap("./figuras/classic-cards/CostasRed.png")
-			);
+			QString endereco = QCoreApplication::applicationDirPath();
+			endereco.append("/figuras/classic-cards/CostasRed.png");
+			c->setPixmap(QPixmap(endereco));
 		}
-
 		vbox->addWidget(c);
 	}
 }
-
 
 void GUI_FUNDACAO::mouseReleaseEvent( QMouseEvent * ev){
 	if (ev->button() == Qt::LeftButton){
@@ -264,15 +286,15 @@ void GUI_FUNDACAO::mouseReleaseEvent( QMouseEvent * ev){
 GUI_BOTAO::GUI_BOTAO(YUKON_GUI * y, QWidget * w, string s)
 : QLabel(w) {
 	yukon = y;
-	
-	if(s == "novo" || s=="salvar" || s=="carregar" || s=="desfazer" || s=="sobre" || s=="ajuda")
-		funcao = s;
+	funcao = s;
 }
 
 void GUI_BOTAO::mouseReleaseEvent( QMouseEvent * ev){
 	if( ev->button() == Qt::LeftButton){
 		if(funcao == "novo"){
 			yukon->novoJogo();
+		} else if(funcao == "sair"){
+			exit(0);
 		}
 	}
 }

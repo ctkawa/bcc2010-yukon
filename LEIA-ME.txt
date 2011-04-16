@@ -84,9 +84,9 @@ YUKON 5:
 			qmake -project && qmake && make
 		
 	Resolver:
-	>> Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
+	>> [Resolvido] Execução com clique no executável constrói a interface mas não mostra as cartas (linux)
 	>> Documento descritivo do desenvolvimento do programa.
-	>> Documento de requisitos do programa
+	>> [? necessário ?]Documento de requisitos do programa
 	>> Adicionar informaçao TURNO na classe YUKON que será usada tanto no YUKON_CLI quanto no YUKON_GUI. Esta variável aparece no Yukon01.
 	>> Resolver tamanho máximo de monte de cartas (CLI ok, GUI [pôr barra de rolagem]).
 	>> Rever implementação de objetos básicos: PILHA, MONTE, CARTA, etc.
