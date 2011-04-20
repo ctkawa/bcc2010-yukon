@@ -181,7 +181,7 @@ GUI_CARTA::GUI_CARTA(YUKON_GUI * y, QWidget * w, int m, int c)
 	ordem = c;
 	yukon = y;
 	
-	setGeometry(0, ordem*20, 100, 100);
+	setGeometry(0, ordem*20, 0, 0);
 }
 
 void GUI_CARTA::setCarta(CARTA * carta){
@@ -202,6 +202,7 @@ void GUI_CARTA::setCarta(CARTA * carta){
 		endereco.append("/figuras/classic-cards/CostasRed.png");
 		setPixmap(QPixmap(endereco));
 	}
+	adjustSize();
 }
 
 void GUI_CARTA::mouseReleaseEvent( QMouseEvent * ev){
@@ -222,7 +223,7 @@ GUI_VAZIO::GUI_VAZIO(YUKON_GUI * y, QWidget * w, int m)
 	ordem = 0;
 	yukon = y;
 	
-	setGeometry(0, ordem*20, 100, 100);
+	setGeometry(0, ordem*20, 0, 0);
 	
 	QString endereco = QCoreApplication::applicationDirPath();
 	endereco.append("/figuras/classic-cards/vazio.png");
