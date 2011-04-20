@@ -20,7 +20,7 @@ int YUKON_GUI::run(){
 	
 	window->setGeometry(100, 100, 800, 600);
 	
-	status(QCoreApplication::applicationDirPath());
+	status("");
 	principal();
 	
 	window->show();
@@ -181,7 +181,7 @@ GUI_CARTA::GUI_CARTA(YUKON_GUI * y, QWidget * w, int m, int c)
 	ordem = c;
 	yukon = y;
 	
-	setGeometry(0, ordem*20, 0, 0);
+	setGeometry(0, ordem*20, 100, 100);
 }
 
 void GUI_CARTA::setCarta(CARTA * carta){
@@ -195,7 +195,6 @@ void GUI_CARTA::setCarta(CARTA * carta){
 		endereco.append(s);
 		endereco.append(".png");
 		setPixmap(QPixmap(endereco));
-		yukon->status(endereco);
 	}
 	else {
 		QString endereco = QCoreApplication::applicationDirPath();
@@ -223,8 +222,7 @@ GUI_VAZIO::GUI_VAZIO(YUKON_GUI * y, QWidget * w, int m)
 	ordem = 0;
 	yukon = y;
 	
-	setGeometry(0, ordem*20, 0, 0);
-	
+	setGeometry(0, ordem*20, 100, 100);
 	QString endereco = QCoreApplication::applicationDirPath();
 	endereco.append("/figuras/classic-cards/vazio.png");
 	setPixmap(QPixmap(endereco));
