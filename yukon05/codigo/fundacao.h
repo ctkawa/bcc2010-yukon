@@ -2,7 +2,7 @@
 
 class FUNDACAO {
 private:
-	int montes[4];
+	int montes[4];	// 0 significa que nao ha carta, 13 é K
 public:
 	FUNDACAO();
 	int getMonte( int );

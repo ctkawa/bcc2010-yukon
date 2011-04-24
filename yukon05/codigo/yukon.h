@@ -23,6 +23,7 @@ public:
 	int getMaxMonteTam();		// retorna o num carta de maior monte
 	FUNDACAO * getFundacao();
 	void novoJogo();
+	bool verificaFimJogo();		// retorna true se ganhar do jogo
 };
 
 #endif

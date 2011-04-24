@@ -7,7 +7,7 @@ FUNDACAO::FUNDACAO(){
 int FUNDACAO::getMonte( int monte ){
 	if(0<=monte && monte <4)
 		return montes[monte];
-	return 0;
+	return -1;				// erro se retornar -1
 }
 
 void FUNDACAO::receberCarta( MONTE * m, bool& ok ){

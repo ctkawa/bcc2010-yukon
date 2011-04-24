@@ -12,11 +12,13 @@ int YUKON_CLI::run(){
 	string comando;
 	string mensagem = "Jogo começou";
 	
-	do {
+	do {	//logica principal
 	
+
 		imprimeCartas();
 		cout << endl << ">> ";
 		cin >> comando;
+		system("clear");
 		switch( interpretar(comando) ){
 			case 0:
 				estado=1;
@@ -30,6 +32,10 @@ int YUKON_CLI::run(){
 				estado=0;
 				cout << "Fechando jogo..." << endl;
 				break;
+		}
+		if (verificaFimJogo()){
+			mensagem = "Você ganhou !!!\tFim do jogo.\tEnter para fechar.";
+			estado=4;
 		}
 	} while (estado != 0);
 	
@@ -52,20 +58,21 @@ void YUKON_CLI::imprimeCartas(){
 	MONTE * monte;
 	
 	for(i=0;i<getMaxMonteTam();i++){
-		cout << "  " << i; // linha
+		cout << "  " << i; // numeracao de linhas
 		if (i<10)
-			cout << " ";		// espacamento para numeros de um digito
+			cout << " ";
 		cout << "|" << "\t";
 		for(j=0;j<=6;j++){
 			monte = getMonte(j);
 			if(monte->getTamanho() >= i+1)
-				cout << i << *monte->getCarta(i,ok) << "\t";
+				cout /*<< i*/ << *monte->getCarta(i,ok) << "\t";
 			else
-				cout << "\t*";
-		}                  
+				cout << "\t";
+		}
 		cout << "| " << i << endl;
 	}
 	
+/*	// montes em horizontal
 	cout << "---\n";
 	for(j=0;j<6;j++){
 		monte = getMonte(j);
@@ -75,10 +82,9 @@ void YUKON_CLI::imprimeCartas(){
 		}
 		cout << endl;
 	}
+*/
 	cout << "---\n";
-	
 	FUNDACAO * fundacao = getFundacao();
-	
 	if(fundacao->getMonte(0) == 0)
 		cout << "[♡,  ] ";
 	else
@@ -110,8 +116,12 @@ int YUKON_CLI::interpretar(string cmd){
 	
 	bool ok;
 	
-	if (cmd == "")
+	if (cmd == ""){
+		if (verificaFimJogo())
+			return 3;
 		return 2;
+	}
+	
 	if (cmd=="fechar")
 		return 3;
 	

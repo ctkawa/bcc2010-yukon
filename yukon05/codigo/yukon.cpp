@@ -86,3 +86,11 @@ int YUKON::getMaxMonteTam(){
 FUNDACAO * YUKON::getFundacao(){
 	return &fundacao;
 }
+
+bool YUKON::verificaFimJogo(){
+	if(fundacao.getMonte(0)==13 && fundacao.getMonte(1)==13 && fundacao.getMonte(2)==13 && fundacao.getMonte(3)==13)
+		return true;
+	return false;
+}
+
+
