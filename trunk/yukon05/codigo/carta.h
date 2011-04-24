@@ -23,7 +23,7 @@ using namespace std;
 	 int getValor();
 	 char getNaipe();
 	 bool getVisivel();
-	 bool setVisivel(); // seleciona a visibilidade
+	 bool setVisivel(); // torna visivel
 	 bool getCor(); // 0 = preto, 1 = vermelho
  };
  
