@@ -7,11 +7,11 @@
 class PILHA{
 private:
 	CARTA ** cartas;
-	int tamMax;
+	int tamMax;			//maximo de elemento que a pilha pode conter
 	int tamanho;
 public:
-	PILHA( int );
-	int getTamanho();
+	PILHA( int );			//informar o tamanho maximo da pilha ao instanciar
+	int getTamanho();		// retorna tamanho atual
 	int getTamanhoMax();
 	void empilha( CARTA * , bool&);
 	CARTA * desempilha( bool& );
