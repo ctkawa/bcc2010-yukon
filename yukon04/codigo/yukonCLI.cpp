@@ -11,16 +11,19 @@ int YUKON_CLI::run(){
 	int estado = 1;
 	string comando;
 	string mensagem = "Jogo começou";
-	
+	//string &msg = mensagem;
+	system("clear");
 	do {
-	
+		cout << mensagem << endl << endl;
 		imprimeCartas();
 		cout << endl << ">> ";
 		cin >> comando;
-		switch( interpretar(comando) ){
+		system("clear");
+		mensagem = "";
+		switch( interpretar(comando, mensagem) ){
 			case 0:
 				estado=1;
-				mensagem = "Movendo...";
+				//mensagem = "Movendo...";
 				break;
 			case 1:
 				estado=2;
@@ -88,14 +91,14 @@ void YUKON_CLI::imprimeCartas(){
 	cout << endl;
 }
 
-/*
- * m *over
- * ajuda/sobre
- */
+
+
+
+
 
 //interpretacao e execucao de comando
 //forma <pilha_origem>,<posicao_origem>,<pilha_destino>, em numero
-int YUKON_CLI::interpretar(string cmd){
+int YUKON_CLI::interpretar(string cmd, string &msg){
 	
 	if (cmd == "")
 		return 2;
