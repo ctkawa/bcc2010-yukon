@@ -6,5 +6,5 @@ private:
 	void imprimeCartas();
 public:
 	YUKON_CLI();
-	int run();
+	int run();		// inicia jogo principal
 };
