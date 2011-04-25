@@ -15,6 +15,7 @@ int YUKON_CLI::run(){
 	do {	//logica principal
 	
 
+		cout << mensagem << endl;
 		imprimeCartas();
 		cout << endl << ">> ";
 		cin >> comando;
@@ -32,10 +33,18 @@ int YUKON_CLI::run(){
 				estado=0;
 				cout << "Fechando jogo..." << endl;
 				break;
+			case 4:
+				estado=1;
+				mensagem = "Gerando novo jogo.";
+				break;
 		}
 		if (verificaFimJogo()){
-			mensagem = "Você ganhou !!!\tFim do jogo.\tEnter para fechar.";
-			estado=4;
+			cout << "Você ganhou !!!\tFim do jogo.\tEnter para fechar." << endl;
+			cin.ignore();
+			while(cin.get()!='\n'){
+				cout << endl;
+			}
+			estado=0;
 		}
 	} while (estado != 0);
 	
@@ -122,6 +131,11 @@ int YUKON_CLI::interpretar(string cmd){
 		return 2;
 	}
 	
+	if(cmd=="novo"||cmd=="novojogo"){
+		YUKON::novoJogo();
+		return 4;
+	}
+	
 	if (cmd=="fechar")
 		return 3;
 	
@@ -147,7 +161,7 @@ int YUKON_CLI::interpretar(string cmd){
 	else
 		cout <<"Movendo carta "<<origemc<<" da pilha "<<origemp<<" para a pilha "<<destino << endl;
 	
-	if (origemp>7||origemp<0||destino>8||destino<0) {
+	if (origemp>7||origemp<0||destino>7||destino<0) {
 		cout << "origem ou destino e incorreto!" << endl;
 		return 1;
 	}
@@ -159,7 +173,7 @@ int YUKON_CLI::interpretar(string cmd){
 	if(origemp == destino)
 		cout<< "Coluna de origem igual coluna de destino" << endl;
 	else
-		if (destino==8){
+		if (destino==7){
 			fundacao.receberCarta(monteOrigem, ok);
 			if(!ok)
 				cout << "Esse movimento não é possível." <<  endl;
