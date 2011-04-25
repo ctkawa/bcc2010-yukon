@@ -105,7 +105,7 @@ void YUKON_GUI::setDe(int monte, int carta){
 		cartaOrigem = carta;
 		
 		char s[50];
-		sprintf(s, "Selecinada carta %d do monte %d.", carta, monte);
+		sprintf(s, "Selecionada carta %d do monte %d.", carta, monte);
 		window->statusBar()->showMessage(s);
 	}
 }
@@ -122,7 +122,7 @@ void YUKON_GUI::movimenta(int monte){
 		MONTE * monteAuxiliar = getMonte(monte);
 		monteAuxiliar->receberCartas(getMonte(monteOrigem), cartaOrigem, ok);
 		if(ok){
-			QString s = "Movido com sucesso";
+				QString s = "Movido com sucesso";
 			window->statusBar()->showMessage(s, 5000);
 		} else
 			window->statusBar()->showMessage("Movimento inválido", 5000);
@@ -137,7 +137,10 @@ void YUKON_GUI::movimentaParaFundacao(){
 	if(isSetDe()){
 		fundacao.receberCarta(getMonte(monteOrigem), ok);
 		if(ok){
-			QString s = "Movido com sucesso";
+			if(verificaFimJogo())
+				QString s = "Fim do jogo !!!";
+			else
+				QString s = "Movido com sucesso";
 			window->statusBar()->showMessage(s, 5000);
 		} else
 			window->statusBar()->showMessage("Movimento inválido", 5000);
