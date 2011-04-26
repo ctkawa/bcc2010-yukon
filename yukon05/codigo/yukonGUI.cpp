@@ -53,16 +53,22 @@ void YUKON_GUI::principal(){
 	
 	QLabel * lComNovo = new GUI_BOTAO(this, wComandos, "novo");
 	lComNovo->setText("Novo");
+	lComNovo->setAlignment(Qt::AlignCenter);
 	comHbox->addWidget(lComNovo);
 	
 	QLabel * lComSair = new GUI_BOTAO(this, wComandos, "sair");
 	lComSair->setText("Sair");
+	lComSair->setAlignment(Qt::AlignCenter);
 	comHbox->addWidget(lComSair);
 	
 	// cartas
 	
 	QWidget * wCartas = new QWidget();
 	vbox->addWidget(wCartas);
+	
+	QRect ret = wCartas->geometry();
+	ret.setHeight(30);
+	wCartas->setGeometry(ret);
 	
 	QHBoxLayout * hbox = new QHBoxLayout();
 	wCartas->setLayout(hbox);
@@ -90,6 +96,8 @@ void YUKON_GUI::principal(){
 	
 	GUI_FUNDACAO * fundacao = new GUI_FUNDACAO(this);
 	hbox->addWidget(fundacao);
+	
+	vbox->addWidget(new QWidget());
 }
 
 bool YUKON_GUI::isSetDe(){
@@ -122,7 +130,7 @@ void YUKON_GUI::movimenta(int monte){
 		MONTE * monteAuxiliar = getMonte(monte);
 		monteAuxiliar->receberCartas(getMonte(monteOrigem), cartaOrigem, ok);
 		if(ok){
-				QString s = "Movido com sucesso";
+			QString s = "Movido com sucesso";
 			window->statusBar()->showMessage(s, 5000);
 		} else
 			window->statusBar()->showMessage("Movimento inválido", 5000);
@@ -137,10 +145,9 @@ void YUKON_GUI::movimentaParaFundacao(){
 	if(isSetDe()){
 		fundacao.receberCarta(getMonte(monteOrigem), ok);
 		if(ok){
+			QString s = "Movido com sucesso";
 			if(verificaFimJogo())
-				QString s = "Fim do jogo !!!";
-			else
-				QString s = "Movido com sucesso";
+				s = "Fim do jogo !!!";
 			window->statusBar()->showMessage(s, 5000);
 		} else
 			window->statusBar()->showMessage("Movimento inválido", 5000);
